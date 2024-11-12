@@ -1,20 +1,47 @@
 @media (max-width: 1120px) {}
 
 @media (max-width: 992px) {
-  .hero_area {
-    height: auto;
+  .custom_nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
   }
 
   #navbarSupportedContent {
-    opacity: 1;
-    transform: none;
-    margin-top: 15px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%; /* Adjust based on your design needs */
+    height: 100vh; /* Full height for mobile view */
+    background-color: #343a40; /* Adjust to match your design */
+    overflow-y: auto; /* Enable scrolling if needed */
+    z-index: 1000;
+    padding: 1rem;
+    transform: translateX(100%); /* Initially hide */
+    transition: transform 0.3s ease-in-out;
   }
-
 
   .navbar-toggler {
-    padding: 0.25rem 0;
+    margin-left: auto;
+    z-index: 1001; /* Ensure it stays above other elements */
   }
+
+  .navbar-collapse.show {
+    transform: translateX(0); /* Slide in from the right */
+  }
+
+  .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items on the left inside the dropdown */
+  }
+
+  .navbar-brand {
+    flex-grow: 1;
+  }
+
+
 
 
   .header_section .user_option {
