@@ -25,76 +25,193 @@
   <link href="css/responsive.css" rel="stylesheet" />
 </head>
 <style>
-    body {
-            display: flex;
-            flex-direction: column;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        .container {
+  /* Global Styles */
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
 
-            display: flex;
-            flex-wrap: wrap;
-            gap: 200px;
-            margin: 50px;
-        }
-        .left-side, .right-side {
-            flex: 4;
-            min-width: 300px;
-        }
-        .left-side {
-            padding: 20px;
-            border: 2px solid #090808;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(10, 10, 10, 0.1);
-            background-color: #f9f9f9;
-           
-        }
-        .right-side {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            
-            
-        }
-        .updates-header {
-            text-align: center;
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        .right-side {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .update-box {
-            display: flex;
-            align-items: center;
-            border: 3px solid #121111;
-            border-radius: 10px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            background-color: #fff;
-        }
-        .update-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        }
-        .update-photo {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-        }
-        .update-title {
-            padding: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #010101;
-            flex-grow: 1;
-        }
+/* Container for Layout */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 40px auto;
+    max-width: 1200px;
+}
+
+/* Left and Right Sections */
+.left-side, .right-side {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Left Side Content */
+.left-side {
+    padding: 20px;
+    border: 2px solid #090808;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(10, 10, 10, 0.1);
+    background-color: #fff;
+}
+
+/* Right Side Content */
+.right-side {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Updates Header */
+.updates-header {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Update Box Styles */
+.update-box {
+    display: flex;
+    align-items: center;
+    border: 3px solid #121111;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #fff;
+}
+.update-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Image in Update Box */
+.update-photo {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+/* Title in Update Box */
+.update-title {
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #010101;
+    flex-grow: 1;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For small to medium screens (up to 992px) */
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .left-side, .right-side {
+        min-width: 100%;
+    }
+
+    .updates-header {
+        font-size: 24px;
+    }
+
+    .update-box {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .update-photo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .update-title {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+
+/* For smaller screens (up to 768px) */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px;
+    }
+
+    .update-box {
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .update-photo {
+        width: 70px;
+        height: 70px;
+    }
+
+    .update-title {
+        font-size: 16px;
+    }
+
+    .updates-header {
+        font-size: 22px;
+    }
+}
+
+/* For very small screens (up to 576px) */
+@media (max-width: 576px) {
+    .container {
+        margin: 10px;
+        gap: 15px;
+    }
+
+    .update-box {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .update-photo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .update-title {
+        font-size: 14px;
+    }
+
+    .updates-header {
+        font-size: 18px;
+    }
+}
+
+/* For even smaller screens (up to 480px) */
+@media (max-width: 480px) {
+    .update-box {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .update-photo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .update-title {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .updates-header {
+        font-size: 16px;
+    }
+}
+
       
         
 
