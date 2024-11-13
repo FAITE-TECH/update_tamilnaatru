@@ -25,7 +25,7 @@
   <link href="css/responsive.css" rel="stylesheet" />
 </head>
 <style>
-  /* Global Styles */
+/* Global Styles */
 body {
     display: flex;
     flex-direction: column;
@@ -84,7 +84,11 @@ body {
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
     background-color: #fff;
+    width: 90%; /* Added to restrict the box width */
+    max-width: 350px; /* Reduced max-width for smaller size */
+    margin: 0 auto; /* Center the box */
 }
+
 .update-box:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
@@ -112,7 +116,7 @@ body {
 @media (max-width: 992px) {
     .container {
         flex-direction: column;
-        gap: 40px;
+        gap: 30px; /* Adjusted gap */
     }
 
     .left-side, .right-side {
@@ -124,8 +128,7 @@ body {
     }
 
     .update-box {
-        flex-direction: column;
-        gap: 10px;
+        max-width: 320px; /* Smaller max-width */
     }
 
     .update-photo {
@@ -143,20 +146,16 @@ body {
 @media (max-width: 768px) {
     .container {
         margin: 20px;
+        gap: 20px; /* Adjusted gap */
     }
 
     .update-box {
-        flex-direction: row;
-        gap: 15px;
+        max-width: 300px;
     }
 
     .update-photo {
         width: 70px;
         height: 70px;
-    }
-
-    .update-title {
-        font-size: 16px;
     }
 
     .updates-header {
@@ -174,6 +173,7 @@ body {
     .update-box {
         flex-direction: column;
         align-items: center;
+        max-width: 280px; /* Adjusted width */
     }
 
     .update-photo {
@@ -193,8 +193,7 @@ body {
 /* For even smaller screens (up to 480px) */
 @media (max-width: 480px) {
     .update-box {
-        flex-direction: column;
-        align-items: center;
+        max-width: 260px; /* Smaller width */
     }
 
     .update-photo {
@@ -211,9 +210,6 @@ body {
         font-size: 16px;
     }
 }
-
-      
-        
 
 </style>
 
@@ -464,7 +460,7 @@ end client section -->
 <div class="container">
   <div class="left-side" id="updateContent">
     <h2 class="updates-header">சமீபத்திய புதுப்பிப்புகள்</h2>
-    <p>இங்கே விவரங்களைப் பார்க்க வலதுபுறத்தில் உள்ள தலைப்புகளை கிளிக் செய்யவும்.</p>
+    <p>இங்கே விவரங்களைப் பார்க்க வலதுபுறத்தில் உள்ள தலைப்புகளை அழுத்தவும்</p>
 </div>
   <div class="right-side" id="updateList">
       <div class="update-box" onclick="showUpdate('Update 1 content...')">
