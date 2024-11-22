@@ -34,47 +34,36 @@ body {
     background-color: #f9f9f9;
 }
 
-/* Container for Layout */
+/* Parent container holding left-side and right-side */
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    display: flex; /* Align left-side and right-side horizontally */
+    flex-direction: row; /* Default row direction for side-by-side layout */
+    gap: 120px; /* Space between the sections */
     margin: 40px auto;
     max-width: 1200px;
 }
 
-/* Left and Right Sections */
-.left-side, .right-side {
-    flex: 1;
-    min-width: 300px;
-}
-
-/* Left Side Content */
+/* Left Side Container */
 .left-side {
-    padding: 20px;
-    border: 2px solid #090808;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(10, 10, 10, 0.1);
-    background-color: #fff;
-}
-
-/* Right Side Content */
-.right-side {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px; /* Space between each update */
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for container */
 }
 
-/* Updates Header */
-.updates-header {
-    text-align: center;
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
+/* Right Side Section */
+.right-side {
+    display: flex;
+    flex-direction: column; /* Contents inside the right-side stack vertically */
+    gap: 20px; /* Spacing between the update boxes */
+    width: 35%; /* Take up 35% of the container width */
+    max-width: 400px; /* Optional: Limit max-width */
 }
 
-/* Update Box Styles */
+/* Update Box Styles (Right Side Content) */
 .update-box {
     display: flex;
     align-items: center;
@@ -84,9 +73,7 @@ body {
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
     background-color: #fff;
-    width: 90%; /* Added to restrict the box width */
-    max-width: 350px; /* Reduced max-width for smaller size */
-    margin: 0 auto; /* Center the box */
+    width: 100%; /* Full width of the container */
 }
 
 .update-box:hover {
@@ -110,106 +97,91 @@ body {
     flex-grow: 1;
 }
 
-/* Media Queries for Responsiveness */
+/* Inner Div Styling */
+.left-side > div {
+    display: flex;
+    gap: 20px; /* Space between the image and the content */
+    align-items: flex-start; /* Align items at the start */
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Subtle shadow for elegance */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
 
-/* For small to medium screens (up to 992px) */
+.left-side > div:hover {
+    transform: scale(1.02); /* Slight zoom effect on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Content (h2, p, h5, button) Styling Inside Div */
+.left-side > div > img + * { /* Ensures everything after the image is grouped */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    gap: 10px; /* Space between h2, p, h5, and button */
+}
+
+/* Image Styling */
+.update-photo1 {
+    width: 120px; /* Fixed width for uniformity */
+    height: 120px; /* Fixed height to maintain square shape */
+    object-fit: cover; /* Ensure the image scales properly */
+    border-radius: 8px; /* Rounded corners for the image */
+    flex-shrink: 0; /* Prevent the image from shrinking */
+}
+
+/* Text Content Styling */
+.left-side h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 0; /* Remove extra margin for better alignment */
+}
+
+.left-side p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    margin: 0; /* Remove extra margin for better alignment */
+}
+
+
+
+/* Button Styling */
+.left-side button {
+    background-color:#ff4f5a; /* Beautiful purple button */
+    color: #fff;
+    font-size: 12px; /* Reduced font size */
+    padding: 5px 10px; /* Reduced padding */
+    border: none;
+    border-radius: 3px; /* Slightly smaller border radius */
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Slightly lighter shadow */
+    transition: background-color 0.3s, transform 0.2s;
+    width: auto; /* Automatically adjusts to content */
+    max-width: 150px; /* Maximum width to control length */
+    text-align: center; /* Ensure text is centered */
+}
+
+.left-side button:hover {
+    background-color: white; /* Darker purple on hover */
+    transform: translateY(-2px); /* Slightly reduced lift effect */
+}
+
+
+
+/* Responsive Design */
 @media (max-width: 992px) {
     .container {
-        flex-direction: column;
-        gap: 30px; /* Adjusted gap */
+        flex-direction: column; /* Stack left-side and right-side vertically on smaller screens */
     }
 
     .left-side, .right-side {
-        min-width: 100%;
-    }
-
-    .updates-header {
-        font-size: 24px;
-    }
-
-    .update-box {
-        max-width: 320px; /* Smaller max-width */
-    }
-
-    .update-photo {
-        width: 80px;
-        height: 80px;
-    }
-
-    .update-title {
-        font-size: 16px;
-        padding: 10px;
+        width: 100%; /* Full width for smaller screens */
+        max-width: none;
     }
 }
 
-/* For smaller screens (up to 768px) */
-@media (max-width: 768px) {
-    .container {
-        margin: 20px;
-        gap: 20px; /* Adjusted gap */
-    }
-
-    .update-box {
-        max-width: 300px;
-    }
-
-    .update-photo {
-        width: 70px;
-        height: 70px;
-    }
-
-    .updates-header {
-        font-size: 22px;
-    }
-}
-
-/* For very small screens (up to 576px) */
-@media (max-width: 576px) {
-    .container {
-        margin: 10px;
-        gap: 15px;
-    }
-
-    .update-box {
-        flex-direction: column;
-        align-items: center;
-        max-width: 280px; /* Adjusted width */
-    }
-
-    .update-photo {
-        width: 60px;
-        height: 60px;
-    }
-
-    .update-title {
-        font-size: 14px;
-    }
-
-    .updates-header {
-        font-size: 18px;
-    }
-}
-
-/* For even smaller screens (up to 480px) */
-@media (max-width: 480px) {
-    .update-box {
-        max-width: 260px; /* Smaller width */
-    }
-
-    .update-photo {
-        width: 50px;
-        height: 50px;
-    }
-
-    .update-title {
-        font-size: 14px;
-        padding: 8px;
-    }
-
-    .updates-header {
-        font-size: 16px;
-    }
-}
 
 </style>
 
@@ -316,314 +288,66 @@ body {
   </div>
 
 
-  <!-- experience section 
+ 
 
-  <section class="experience_section layout_padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-5">
-          <div class="img-box">
-            <img src="images/essay.jpg" alt="">
-          </div>
-        </div>
-        <div class="col-md-7">
-          <div class="detail-box">
-            <div class="heading_container">
-              <h2>
-                Where beautiful journals meet your creative mind.
-              </h2>
-            </div>
-            <p>
-              It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
-            </p>
-            <div class="btn-box">
-              <a href="" class="btn-1">
-                Read More
-              </a>
-              <a href="upload.html" class="btn-2">
-                Upload
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-   end experience section -->
-   <!-- category section 
-
-<section class="category_section layout_padding">
   <div class="container">
-    <div class="heading_container">
-      <h2>
-        Category
-      </h2>
-    </div>
-    <div class="category_container">
-      <div class="box">
-        <div class="img-box">
-          <img src="images/essay icon.png " width="100px" height="100px" alt="">
+    <!-- Left Side -->
+    <div class="left-side">
+        <div>
+            <img src="images/valluvar.png" alt="Update 1" class="update-photo1">
+            <div class="content">
+            <h2 class="updates-header">திருக்குறளில் அரசியல் சிந்தனைகள்</h2>
+            <p>நீதி இலக்கியங்களுள் திருக்குறள் அரசியல் பற்றி பேசும்பொழுது, மொழி, இனம், மதம், நாடு போன்றவற்றைச் சாராமல்...</p>
+           
+            <button>Read More</button>
+            </div>
         </div>
-        <div class="detail-box">
-          <h5>
-            Essay
-          </h5>
-          <div class="subcategories">
-            <button class="subcategory-btn">Education</button>
-            <button class="subcategory-btn">Social</button>
-            <button class="subcategory-btn">Political</button>
-            <button class="subcategory-btn">Psychology</button>
-          </div>
+        <div>
+            <img src="kat.jpg" alt="Update 2" class="update-photo1">
+            <div class="content">
+            <h2 class="updates-header">திருக்குறள் ஆய்வுக்கட்டுரைகள்</h2>
+            <p>திருக்குறள். ஆய்வுக் கட்டுரைகள். தொகுப்பு-II. வெளியீடு : பண்பாட்டலுவல்கள் திணைக்களம்,. கல்வி, பண்பாட்டலுவல்கள்....</p>
+            
+            <button>Read More</button>
+            </div>
         </div>
-      </div>
-      <div class="box">
-        <div class="img-box">
-          <img src="images/G.k.png" width="100px" height="100px" alt="">
-        </div>
-        <div class="detail-box">
-          <h5>
-          General knowledge
-          </h5>
-          <div class="subcategories">
-            <button class="subcategory-btn">India</button>
-            <button class="subcategory-btn">Srilanka</button>
-            <button class="subcategory-btn">World</button>
-          </div>
-        </div>
-      </div>
-      <div class="box">
-        <div class="img-box">
-          <img src="images/liticon.png" width="100px" height="100px" alt="">
-        </div>
-        <div class="detail-box">
-          <h5>
-            Literature
-          </h5>
-          <div class="subcategories">
-            <button class="subcategory-btn">Short story</button>
-            <button class="subcategory-btn">Poem</button>
-            <button class="subcategory-btn">Cinema</button>
-          </div>
-        </div>
-      </div>
-     
-    </div>
-  </div>
-</section>
-
-
-end category section -->
-
- <!-- client section 
-
- <section class="membership_form_section layout_padding">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9 col-md-10 mx-auto">
-        <div class="heading_container">
-          <h2>Membership Form</h2>
+        <div>
+          <img src="books.png" alt="Update 2" class="update-photo1">
+        <div class="content">
+          <h2 class="updates-header">திருக்குறளின் பெருமையை கூறும் நூல்கள்</h2>
+          <p>திருக்குறளின் பெருமையை விளக்கும் நூல் திருவள்ளுவமாலை · திருவள்ளுவ மாலை எனும் நூல் திருக்குறளின் பெருமைகளையும்....</p>
           
+          <button>Read More</button>
         </div>
-       
-        <form action="submit_membership.php" method="POST" class="membership_form">
-          <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Enter your phone number" required>
-          </div>
-         
-          <div class="form-group">
-            <label for="comments">Comments or Questions</label>
-            <textarea id="comments" name="comments" class="form-control" rows="4" placeholder="Any additional information or questions"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
       </div>
-    </div>
-  </div>
-</section>
-
-
-end client section -->
-
-<!--category section-->
-
-<div class="container">
-  <div class="left-side" id="updateContent">
-    <h2 class="updates-header">சமீபத்திய புதுப்பிப்புகள்</h2>
-    <p>இங்கே விவரங்களைப் பார்க்க வலதுபுறத்தில் உள்ள தலைப்புகளை அழுத்தவும்</p>
-</div>
-  <div class="right-side" id="updateList">
-      <div class="update-box" onclick="showUpdate('Update 1 content...')">
-          <img src="images/thiru.jpg" alt="Update 1" class="update-photo">
-          <div class="update-title">திருக்குறல்</div>
-      </div>
-      <div class="update-box" onclick="showUpdate('Update 2 content...')">
-          <img src="images/book.png" alt="Update 2" class="update-photo">
-          <div class="update-title">சிறுகதை</div>
-      </div>
-      <div class="update-box" onclick="showUpdate('Update 2 content...')">
-        <img src="images/brain.png" alt="Update 2" class="update-photo">
-        <div class="update-title">பொது அறிவு </div>
-    </div>
-    <div class="update-box" onclick="showUpdate('Update 2 content...')">
-      <img src="images/cine.jpg" alt="Update 2" class="update-photo">
-      <div class="update-title">சினிமா</div>
-  </div>
       
-  </div>
+    </div>
+
+    <!-- Right Side -->
+    <div class="right-side" id="updateList">
+        <div class="update-box">
+            <img src="images/thiru.jpg" alt="Update 1" class="update-photo">
+            <div class="update-title">திருக்குறள்</div>
+        </div>
+        <div class="update-box">
+            <img src="images/book.png" alt="Update 2" class="update-photo">
+            <div class="update-title">சிறுகதை</div>
+        </div>
+        <div class="update-box">
+          <img src="images/brain.png" alt="Update 1" class="update-photo">
+          <div class="update-title">பொது அறிவு</div>
+      </div>
+      <div class="update-box">
+        <img src="images/cine.jpg" alt="Update 1" class="update-photo">
+        <div class="update-title"> சினிமா</div>
+    </div>
+
+    </div>
 </div>
 
 <!--end category section-->
 
 
-
-<!--info section 
-
-<section class="info_section ">
-  <div class="info_container layout_padding-top">
-    <div class="container">
-      <div class="info_top">
-        <div class="info_logo">
-          <img src="images/logo.png" alt="" />
-          <span>
-            TamilNaatru
-          </span>
-        </div>
-        <div class="social_box">
-          <a href="#">
-            <img src="images/fb.png" alt="">
-          </a>
-          <a href="#">
-            <img src="images/twitter.png" alt="">
-          </a>
-          <a href="#">
-            <img src="images/linkedin.png" alt="">
-          </a>
-          <a href="#">
-            <img src="images/instagram.png" alt="">
-          </a>
-          <a href="#">
-            <img src="images/youtube.png" alt="">
-          </a>
-        </div>
-      </div>
-
-      <div class="info_main">
-        <div class="row">
-          <div class="col-md-3 col-lg-2">
-            <div class="info_link-box">
-              <h5>
-                Useful Link
-              </h5>
-              <ul>
-                <li class=" active">
-                  <a class="" href="index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="">
-                  <a class="" href="about.html">About </a>
-                </li>
-                <li class="">
-                  <a class="" href="work.html">Mebership </a>
-                </li>
-                <li class="">
-                  <a class="" href="category.html">Category </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-3 ">
-            <h5>
-              Offices
-            </h5>
-            <p>
-              Readable content of a page when looking at its layoutreadable content of a page when looking at its layout
-            </p>
-          </div>
-
-          <div class="col-md-3 col-lg-2 offset-lg-1">
-            <h5>
-              Information
-            </h5>
-            <p>
-              Readable content of a page when looking at its layoutreadable content of a page when looking at its layout
-            </p>
-          </div>
-
-          <div class="col-md-3  offset-lg-1">
-            <div class="info_form ">
-              <h5>
-                Newsletter
-              </h5>
-              <form action="">
-                <input type="email" placeholder="Email">
-                <button>
-                  Subscribe
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-9 col-md-10 mx-auto">
-          <div class="info_contact layout_padding2">
-            <div class="row">
-              <div class="col-md-3">
-                <a href="#" class="link-box">
-                  <div class="img-box">
-                    <img src="images/location.png" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h6>
-                      Location
-                    </h6>
-                  </div>
-                </a>
-              </div>
-              <div class="col-md-4">
-                <a href="#" class="link-box">
-                  <div class="img-box">
-                    <img src="images/mail.png" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h6>
-                      demo@gmail.com
-                    </h6>
-                  </div>
-                </a>
-              </div>
-              <div class="col-md-5">
-                <a href="#" class="link-box">
-                  <div class="img-box">
-                    <img src="images/call.png" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h6>
-                      Call +01 1234567890
-                    </h6>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
- end info section -->
 
 <!--new footer section-->
 
