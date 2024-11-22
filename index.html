@@ -20,9 +20,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Pavanam&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  
 </head>
 <style>
 /* Global Styles */
@@ -164,21 +167,212 @@ body {
 }
 
 .left-side button:hover {
-    background-color: white; /* Darker purple on hover */
+    background-color: rgb(99, 58, 58); /* Darker purple on hover */
     transform: translateY(-2px); /* Slightly reduced lift effect */
 }
 
+.header_section {
+  background-color: #1a2e35;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbar-brand img {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav .nav-item {
+  margin: 0 10px;
+}
+
+.navbar-nav .nav-link {
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: #495057;
+  border-radius: 5px;
+}
+
+.navbar-toggler {
+  border: none; /* Remove border around the toggle button */
+  background-color: #fff; /* White background for visibility */
+}
+
+.navbar-toggler-icon {
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"%3E%3Cpath stroke="rgba%28100, 100, 100, 0.5%29" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+}
 
 
-/* Responsive Design */
+ /* Small Page Design */
+ .small-page {
+      background-color: #32d0c5;
+      margin: 20px auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: 80%;
+      text-align: center;
+    }
+
+    .small-page h2 {
+      font-size: 24px;
+      font-family: 'Georgia', serif;
+      color: #333333;
+      margin-bottom: 20px;
+    }
+
+    .small-page p {
+      font-size: 16px;
+      color: #555555;
+      line-height: 1.6;
+    }
+
+    .small-page .cta-btn {
+      display: inline-block;
+      padding: 12px 25px;
+      margin-top: 20px;
+      font-size: 16px;
+      color: #f9f5f5;
+      background-color: #ff4f5a;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .small-page .cta-btn:hover {
+      background-color: #159f96;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+
+
+/* Responsive Design for Medium Screens */
 @media (max-width: 992px) {
     .container {
-        flex-direction: column; /* Stack left-side and right-side vertically on smaller screens */
+        flex-direction: column; /* Stack left-side and right-side vertically */
+        gap: 30px; /* Adjust spacing between sections */
+        padding: 20px;
     }
 
     .left-side, .right-side {
-        width: 100%; /* Full width for smaller screens */
-        max-width: none;
+        width: 100%; /* Take full width for smaller screens */
+        max-width: 100%;
+        padding: 15px; /* Add padding for better appearance */
+    }
+
+    .update-box {
+        flex-direction: column; /* Stack image and text vertically */
+        align-items: center;
+        text-align: center;
+    }
+
+    .update-photo {
+        width: 80px; /* Adjust image size */
+        height: 80px;
+    }
+
+    .update-title {
+        font-size: 16px; /* Reduce font size */
+        padding: 10px;
+    }
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+    .small-page {
+        max-width: 90%; /* Reduce the width for better fitting */
+        padding: 20px;
+    }
+
+    .small-page h2 {
+        font-size: 20px; /* Adjust font size */
+    }
+
+    .small-page p {
+        font-size: 14px;
+    }
+
+    .container {
+        gap: 20px; /* Reduce spacing between sections */
+    }
+
+    .left-side button {
+        font-size: 12px;
+        padding: 8px 10px; /* Adjust padding for smaller buttons */
+    }
+
+    .update-photo1 {
+        width: 100px; /* Adjust left-side images */
+        height: 100px;
+    }
+}
+
+/* Responsive Design for Extra Small Screens */
+@media (max-width: 576px) {
+    .navbar-brand span {
+        font-size: 16px; /* Reduce logo text size */
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    .update-box {
+        flex-direction: column; /* Stack image and text */
+        gap: 10px;
+    }
+
+    .update-photo {
+        width: 60px; /* Smaller image size */
+        height: 60px;
+    }
+
+    .update-title {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .left-side h2 {
+        font-size: 16px; /* Smaller font size for headers */
+    }
+
+    .left-side p {
+        font-size: 12px; /* Smaller font size for text */
+    }
+
+    .left-side button {
+        font-size: 10px;
+        padding: 6px 8px; /* Compact buttons */
     }
 }
 
@@ -187,119 +381,108 @@ body {
 
 
 <body>
-  <div class="hero_area">
-    <!-- header section strats -->
-    <header class="header_section">
-      <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg custom_nav-container">
-          <a class="navbar-brand" href="index.html">
-            <img src="images/logo.png" alt="" />
-            <span>
-              தமிழ் நாற்று
-            </span>
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav  ">
-              <li class="nav-item active">
-                <a class="nav-link" href="index.html">முகப்பு <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html"> கட்டுரைகள்</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="work.html">இலக்கியம் </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="category.html"> பொது அறிவு </a>
-              </li>
-            </ul>
-            <div class="user_option">
-              <a href="">
-                <span>
-                  தமிழ் நாற்று
-                </span>
-              </a>
-              <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-              </form>
-            </div>
-          </div>
-          <div>
-            <div class="custom_menu-btn ">
-              <button>
-                <span class=" s-1">
+  <header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
+        <!-- Logo and Brand -->
+        <a class="navbar-brand" href="index.html">
+          <img src="images/logo.png" alt="Logo" />
+          <span>தமிழ் நாற்று</span>
+        </a>
+  
+        <!-- Hamburger Button for Small Devices -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <!-- Navigation Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">முகப்பு</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">கட்டுரைகள்</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="work.html">இலக்கியம்</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="category.html">பொது அறிவு</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  
 
-                </span>
-                <span class="s-2">
 
-                </span>
-                <span class="s-3">
 
-                </span>
-              </button>
-            </div>
-          </div>
 
-        </nav>
-      </div>
-    </header>
-    <!-- end header section -->
-    <!-- slider section -->
-    <section class="slider_section ">
-     
-      
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-md-5 offset-md-1">
-                  <div class="detail-box">
-                    <h1>
-                      "அறிவுடையார் எல்லாம் உடையார் <br>
-                      அறிவிலார் என்னுடைய <br>
-                      ரேனும் இலர்"
-                    </h1>
+        <section class="small-page">
+          <h2> தமிழ் நாற்று வலைத்தள பக்கத்திற்கு வரவேற்கிறோம்</h2>
+          <p>
+            உங்கள் கற்றல் மற்றும் ஆய்வுக்காக சிந்தனையுடன் வடிவமைக்கப்பட்ட பல்வேறு தலைப்புகளில் விரிவான கட்டுரைகளைக் கண்டறியவும். ஆர்வத்தையும் படைப்பாற்றலையும் மதிக்கும் சமூகத்தில் உங்கள் அறிவைக் கற்கவும், பகிரவும் இவ் வலைத்தளம் உதவுகின்றது.
+          </p>
+          <a href="#explore" class="cta-btn">கட்டுரைகளை ஆராய்க</a>
+        </section>
+        
+        <!-- slider section >
+        <section class="slider_section" style="background-color: #1cbbb4; ">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-5 offset-md-1">
+                    <div class="detail-box">
+                      <h1 style="
+                        color: #1d2323;
+                        font-family: 'Georgia', serif; /* Elegant serif font for the quote */
+                        font-size: 30px;
+                        line-height: 1.5;
+                        text-align: center;
+                        padding: 20px;
+                        background-color: rgba(255, 255, 255, 0.6); /* semi-transparent background */
+                        border-radius: 10px;
+                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                        max-width: 80%;
+                        margin: 0 auto;
+                      ">
+                        "அறிவுடையார் எல்லாம் உடையார் <br>
+                        அறிவிலார் என்னுடைய <br>
+                        ரேனும் இலர்"
+                      </h1>
+                    </div>
                     
                   </div>
-                </div>
-                <div class="offset-md-1 col-md-4 img-container">
-                  <div class="img-box">
-                    <img src="images/valluvar-removebg-preview.png" alt="">
-                    
+                  <div class="offset-md-1 col-md-4 img-container">
+                    <div class="img-box">
+                      <img src="val-removebg-preview.png" alt="Thiruvalluvar">
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          
-          
-        </div>
-
+        </section>
+        <end slider section -->
       </div>
-
-    </section>
-    <!-- end slider section -->
-  </div>
-
-
+  
  
 
   <div class="container">
     <!-- Left Side -->
     <div class="left-side">
         <div>
-            <img src="images/valluvar.png" alt="Update 1" class="update-photo1">
+            <img src="v.jpg" alt="Update 1" class="update-photo1">
             <div class="content">
             <h2 class="updates-header">திருக்குறளில் அரசியல் சிந்தனைகள்</h2>
             <p>நீதி இலக்கியங்களுள் திருக்குறள் அரசியல் பற்றி பேசும்பொழுது, மொழி, இனம், மதம், நாடு போன்றவற்றைச் சாராமல்...</p>
            
-            <button>Read More</button>
+            <button>மேலும் வாசிக்க</button>
             </div>
         </div>
         <div>
@@ -308,7 +491,7 @@ body {
             <h2 class="updates-header">திருக்குறள் ஆய்வுக்கட்டுரைகள்</h2>
             <p>திருக்குறள். ஆய்வுக் கட்டுரைகள். தொகுப்பு-II. வெளியீடு : பண்பாட்டலுவல்கள் திணைக்களம்,. கல்வி, பண்பாட்டலுவல்கள்....</p>
             
-            <button>Read More</button>
+            <button>மேலும் வாசிக்க</button>
             </div>
         </div>
         <div>
@@ -317,7 +500,7 @@ body {
           <h2 class="updates-header">திருக்குறளின் பெருமையை கூறும் நூல்கள்</h2>
           <p>திருக்குறளின் பெருமையை விளக்கும் நூல் திருவள்ளுவமாலை · திருவள்ளுவ மாலை எனும் நூல் திருக்குறளின் பெருமைகளையும்....</p>
           
-          <button>Read More</button>
+          <button>மேலும் வாசிக்க</button>
         </div>
       </div>
       
@@ -349,15 +532,15 @@ body {
 
 
 
-<!--new footer section-->
-
-
-<footer style="background-color: #1a2e35 ; color: #fff; padding: 20px 0; text-align: center;">
+<!-- Footer Section -->
+<footer style="background-color: #1a2e35; color: #fff; padding: 20px 0; text-align: center;">
     <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; padding: 0 20px;">
+        <!-- About Us Section -->
         <div style="flex: 1; min-width: 250px; margin-bottom: 15px;">
             <h4>About us</h4>
             <p>சமீபத்திய புதுப்பிப்புகள் மற்றும் தரமான உள்ளடக்கத்தை கொண்டு வர நாங்கள் கடமைப்பட்டுள்ளோம். மேலும் புதுப்பிப்புகளுக்கு இணைந்திருங்கள்.</p>
         </div>
+        <!-- Quick Links Section -->
         <div style="flex: 1; min-width: 250px; margin-bottom: 15px;">
             <h4>Quick links</h4>
             <ul style="list-style: none; padding: 0;">
@@ -367,35 +550,33 @@ body {
                 <li><a href="#" style="color: #fff; text-decoration: none;">பொது அறிவு</a></li>
             </ul>
         </div>
+        <!-- Contact Us Section -->
         <div style="flex: 1; min-width: 250px; margin-bottom: 15px;">
-            <h4> Follow us</h4>
-             
-            <div style="display: flex; justify-content: center; gap: 15px; margin-top: 10px;">
-                <a href="#" style="color: #fff; font-size: 24px;"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" style="color: #fff; font-size: 24px;"><i class="fab fa-twitter"></i></a>
-                <a href="#" style="color: #fff; font-size: 24px;"><i class="fab fa-instagram"></i></a>
-                <a href="#" style="color: #fff; font-size: 24px;"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" style="color: #fff; font-size: 24px;"><i class="fab fa-youtube"></i></a>
+            <h4>Contact us</h4>
+            <p>Email: info@tamilnaatru.com</p>
+            <p>Phone: +91 123 456 7890</p>
+            <div>
+                <a href="#" style="color: #fff; text-decoration: none; margin-right: 10px;">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none; margin-right: 10px;">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-instagram"></i>
+                </a>
             </div>
         </div>
     </div>
-    <div style="border-top: 1px solid #555; margin-top: 20px; padding-top: 10px;">
-        <p>&copy; 2024 TamilNaatru. All rights reserved.</p>
-    </div>
+    <p style="font-size: 14px; margin-top: 20px;">&copy; 2024 TamilNaatru. All Rights Reserved.</p>
 </footer>
-
-
-<!--end footer -->
 
 
   
   <!-- end  footer section -->
 
 
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/bootstrap.js"></script>
-  <script src="js/custom.js"></script>
-
+  
 
 </body>
 </body>

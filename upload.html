@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <!-- Basic -->
+ <meta charset="utf-8" />
+ <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+ <!-- Mobile Metas -->
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+ <!-- Site Metas -->
+ <meta name="keywords" content="" />
+ <meta name="description" content="" />
+ <meta name="author" content="" />
+
+ <title>TamilNaatru</title>
+
+ <!-- bootstrap core css -->
+ <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+ <!-- Include CKEditor for rich text editing -->
+<script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
+
+ <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+ <!-- Custom styles for this template -->
+ <link href="css/style.css" rel="stylesheet" />
+ <!-- responsive style -->
+ <link href="css/responsive.css" rel="stylesheet" />
+  <link rel="stylesheet" href="uploadstyle.css">
+</head>
+<body class="sub_page">
+  <style>
+    /* General Navbar Styles */
+.header_section {
+  background-color: #1a2e35;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbar-brand img {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav .nav-item {
+  margin: 0 10px;
+}
+
+.navbar-nav .nav-link {
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: #495057;
+  border-radius: 5px;
+}
+
+
+  </style>
+  <div class="hero_area"> 
+    <!-- header section starts -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <!-- Logo and Brand -->
+          <a class="navbar-brand" href="index.html">
+            <img src="images/logo.png" alt="Logo" />
+            <span>தமிழ் நாற்று</span>
+          </a>
+          
+          <!-- Navigation Links -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">முகப்பு</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">கட்டுரைகள்</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="work.html">இலக்கியம்</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="category.html">பொது அறிவு</a>
+            </li>
+          </ul>
+          
+          
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+    
+    <!-- slider section -->
+    <section class="slider_section" style="background-color: #1cbbb4;">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-5 offset-md-1">
+                <div class="detail-box" >
+                  <h1>
+                    "அறிவுடையார் எல்லாம் உடையார் <br>
+                    அறிவிலார் என்னுடைய <br>
+                    ரேனும் இலர்"
+                  </h1>
+                </div>
+              </div>
+              <div class="offset-md-1 col-md-4 img-container">
+                <div class="img-box">
+                  <img src="images/valluvar-removebg-preview.png" alt="Thiruvalluvar">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end slider section -->
+  </div>
+  
+
+    
+  
+ 
+
+  <!-- Upload Form Section -->
+  <section class="upload_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h3>உங்கள் ஆக்கத்தினை பதிவேற்றவும்</h3>
+      </div>
+      <form action="upload_process.php" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="category">ஆக்கத்தின் வகை</label>
+          <select id="category" name="category" required>
+            <option value="Essay">திருக்குறள்</option>
+            <option value="General Knowledge">பொது அறிவு</option>
+            <option value="Literature">சினிமா</option>
+            <option value="Short Story">சிறுகதை</option>
+            <!-- Add other categories here -->
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="title">ஆக்கத்தின் தலைப்பு</label>
+          <input type="text" id="title" name="title" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="image">படத்தை பதிவேற்றவும்</label>
+          <input type="file" id="image" name="image" accept="image/*" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="content">உள்ளடக்கம்</label>
+          <textarea id="content" name="content" rows="10" cols="80"></textarea>
+        </div>
+  
+        <div class="form-group">
+          <button type="submit" class="btn-1">Submit Article</button>
+        </div>
+      </form>
+    </div>
+  </section>
+  
+  <script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
+<script>
+  CKEDITOR.replace('content');
+  
+</script>
+
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/custom.js"></script>
+
+
+
+</body>
+</html>
