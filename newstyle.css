@@ -1,0 +1,400 @@
+/* Global Styles */
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* Parent container holding left-side and right-side */
+.container {
+    display: flex; /* Align left-side and right-side horizontally */
+    flex-direction: row; /* Default row direction for side-by-side layout */
+    gap: 120px; /* Space between the sections */
+    margin: 40px auto;
+    max-width: 1200px;
+}
+
+/* Left Side Container */
+.left-side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between each update */
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for container */
+}
+
+/* Right Side Section */
+.right-side {
+    display: flex;
+    flex-direction: column; /* Contents inside the right-side stack vertically */
+    gap: 20px; /* Spacing between the update boxes */
+    width: 35%; /* Take up 35% of the container width */
+    max-width: 400px; /* Optional: Limit max-width */
+}
+
+/* Update Box Styles (Right Side Content) */
+.update-box {
+    display: flex;
+    align-items: center;
+    border: 3px solid #121111;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #fff;
+    width: 100%; /* Full width of the container */
+}
+
+.update-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Image in Update Box */
+.update-photo {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+/* Title in Update Box */
+.update-title {
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #010101;
+    flex-grow: 1;
+}
+
+/* Inner Div Styling */
+.left-side > div {
+    display: flex;
+    gap: 20px; /* Space between the image and the content */
+    align-items: flex-start; /* Align items at the start */
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Subtle shadow for elegance */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.left-side > div:hover {
+    transform: scale(1.02); /* Slight zoom effect on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Content (h2, p, h5, button) Styling Inside Div */
+.left-side > div > img + * { /* Ensures everything after the image is grouped */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    gap: 10px; /* Space between h2, p, h5, and button */
+}
+
+/* Image Styling */
+.update-photo1 {
+    width: 120px; /* Fixed width for uniformity */
+    height: 120px; /* Fixed height to maintain square shape */
+    object-fit: cover; /* Ensure the image scales properly */
+    border-radius: 8px; /* Rounded corners for the image */
+    flex-shrink: 0; /* Prevent the image from shrinking */
+}
+
+/* Text Content Styling */
+.left-side h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 0; /* Remove extra margin for better alignment */
+}
+
+.left-side p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    margin: 0; /* Remove extra margin for better alignment */
+}
+
+
+
+/* Button Styling */
+.left-side button {
+    background-color:#ff4f5a; /* Beautiful purple button */
+    color: #fff;
+    font-size: 12px; /* Reduced font size */
+    padding: 5px 10px; /* Reduced padding */
+    border: none;
+    border-radius: 3px; /* Slightly smaller border radius */
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Slightly lighter shadow */
+    transition: background-color 0.3s, transform 0.2s;
+    width: auto; /* Automatically adjusts to content */
+    max-width: 150px; /* Maximum width to control length */
+    text-align: center; /* Ensure text is centered */
+}
+
+.left-side button:hover {
+    background-color: rgb(99, 58, 58); /* Darker purple on hover */
+    transform: translateY(-2px); /* Slightly reduced lift effect */
+}
+
+.header_section {
+  background-color: #1a2e35;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbar-brand img {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav .nav-item {
+  margin: 0 10px;
+}
+
+.navbar-nav .nav-link {
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: #495057;
+  border-radius: 5px;
+}
+
+.navbar-toggler {
+  border: none; /* Remove border around the toggle button */
+  background-color: #fff; /* White background for visibility */
+}
+
+.navbar-toggler-icon {
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"%3E%3Cpath stroke="rgba%28100, 100, 100, 0.5%29" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+}
+
+/* Add this for small devices */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 80%; /* Adjust width as needed */
+        background-color: #1a2e35;
+        height: 100vh;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .navbar-collapse.show {
+        transform: translateX(0); /* Show on toggle */
+    }
+
+    .navbar-brand {
+        position: absolute;
+        right: 10px; /* Align to the right */
+        top: 20px;  /* Adjust as per your design */
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        padding-top: 60px; /* Adjust for logo height */
+        text-align: left; /* Align links to the left */
+    }
+
+    .navbar-nav .nav-item {
+        margin: 15px 0; /* Space out the nav links */
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 18px;
+        color: #fff;
+    }
+
+    .navbar-toggler {
+        position: absolute;
+        right: 10px; /* Position toggler on the right side */
+        top: 20px; /* Align toggler */
+    }
+}
+
+/* If navbar is expanded on larger screens, keep standard design */
+@media (min-width: 769px) {
+    .navbar-collapse {
+        position: static;
+    }
+}
+
+
+
+ /* Small Page Design */
+ .small-page {
+      background-color: #32d0c5;
+      margin: 20px auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: 80%;
+      text-align: center;
+    }
+
+    .small-page h2 {
+      font-size: 24px;
+      font-family: 'Georgia', serif;
+      color: #333333;
+      margin-bottom: 20px;
+    }
+
+    .small-page p {
+      font-size: 16px;
+      color: #555555;
+      line-height: 1.6;
+    }
+
+    .small-page .cta-btn {
+      display: inline-block;
+      padding: 12px 25px;
+      margin-top: 20px;
+      font-size: 16px;
+      color: #f9f5f5;
+      background-color: #ff4f5a;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .small-page .cta-btn:hover {
+      background-color: #159f96;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+
+
+/* Responsive Design for Medium Screens */
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column; /* Stack left-side and right-side vertically */
+        gap: 30px; /* Adjust spacing between sections */
+        padding: 20px;
+    }
+
+    .left-side, .right-side {
+        width: 100%; /* Take full width for smaller screens */
+        max-width: 100%;
+        padding: 15px; /* Add padding for better appearance */
+    }
+
+    .update-box {
+        flex-direction: column; /* Stack image and text vertically */
+        align-items: center;
+        text-align: center;
+    }
+
+    .update-photo {
+        width: 80px; /* Adjust image size */
+        height: 80px;
+    }
+
+    .update-title {
+        font-size: 16px; /* Reduce font size */
+        padding: 10px;
+    }
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+    .small-page {
+        max-width: 90%; /* Reduce the width for better fitting */
+        padding: 20px;
+    }
+
+    .small-page h2 {
+        font-size: 20px; /* Adjust font size */
+    }
+
+    .small-page p {
+        font-size: 14px;
+    }
+
+    .container {
+        gap: 20px; /* Reduce spacing between sections */
+    }
+
+    .left-side button {
+        font-size: 12px;
+        padding: 8px 10px; /* Adjust padding for smaller buttons */
+    }
+
+    .update-photo1 {
+        width: 100px; /* Adjust left-side images */
+        height: 100px;
+    }
+}
+
+/* Responsive Design for Extra Small Screens */
+@media (max-width: 576px) {
+    .navbar-brand span {
+        font-size: 16px; /* Reduce logo text size */
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    .update-box {
+        flex-direction: column; /* Stack image and text */
+        gap: 10px;
+    }
+
+    .update-photo {
+        width: 60px; /* Smaller image size */
+        height: 60px;
+    }
+
+    .update-title {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .left-side h2 {
+        font-size: 16px; /* Smaller font size for headers */
+    }
+
+    .left-side p {
+        font-size: 12px; /* Smaller font size for text */
+    }
+
+    .left-side button {
+        font-size: 10px;
+        padding: 6px 8px; /* Compact buttons */
+    }
+}

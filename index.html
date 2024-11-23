@@ -16,6 +16,7 @@
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="newstyle.css" />
 
   <link href="https://fonts.googleapis.com/css2?family=Pavanam&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -24,398 +25,43 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
-
   
 </head>
-<style>
-/* Global Styles */
-body {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-}
-
-/* Parent container holding left-side and right-side */
-.container {
-    display: flex; /* Align left-side and right-side horizontally */
-    flex-direction: row; /* Default row direction for side-by-side layout */
-    gap: 120px; /* Space between the sections */
-    margin: 40px auto;
-    max-width: 1200px;
-}
-
-/* Left Side Container */
-.left-side {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Space between each update */
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for container */
-}
-
-/* Right Side Section */
-.right-side {
-    display: flex;
-    flex-direction: column; /* Contents inside the right-side stack vertically */
-    gap: 20px; /* Spacing between the update boxes */
-    width: 35%; /* Take up 35% of the container width */
-    max-width: 400px; /* Optional: Limit max-width */
-}
-
-/* Update Box Styles (Right Side Content) */
-.update-box {
-    display: flex;
-    align-items: center;
-    border: 3px solid #121111;
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-    background-color: #fff;
-    width: 100%; /* Full width of the container */
-}
-
-.update-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Image in Update Box */
-.update-photo {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-}
-
-/* Title in Update Box */
-.update-title {
-    padding: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #010101;
-    flex-grow: 1;
-}
-
-/* Inner Div Styling */
-.left-side > div {
-    display: flex;
-    gap: 20px; /* Space between the image and the content */
-    align-items: flex-start; /* Align items at the start */
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Subtle shadow for elegance */
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.left-side > div:hover {
-    transform: scale(1.02); /* Slight zoom effect on hover */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-}
-
-/* Content (h2, p, h5, button) Styling Inside Div */
-.left-side > div > img + * { /* Ensures everything after the image is grouped */
-    display: flex;
-    flex-direction: column; /* Stack content vertically */
-    gap: 10px; /* Space between h2, p, h5, and button */
-}
-
-/* Image Styling */
-.update-photo1 {
-    width: 120px; /* Fixed width for uniformity */
-    height: 120px; /* Fixed height to maintain square shape */
-    object-fit: cover; /* Ensure the image scales properly */
-    border-radius: 8px; /* Rounded corners for the image */
-    flex-shrink: 0; /* Prevent the image from shrinking */
-}
-
-/* Text Content Styling */
-.left-side h2 {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin: 0; /* Remove extra margin for better alignment */
-}
-
-.left-side p {
-    font-size: 14px;
-    line-height: 1.5;
-    color: #555;
-    margin: 0; /* Remove extra margin for better alignment */
-}
-
-
-
-/* Button Styling */
-.left-side button {
-    background-color:#ff4f5a; /* Beautiful purple button */
-    color: #fff;
-    font-size: 12px; /* Reduced font size */
-    padding: 5px 10px; /* Reduced padding */
-    border: none;
-    border-radius: 3px; /* Slightly smaller border radius */
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Slightly lighter shadow */
-    transition: background-color 0.3s, transform 0.2s;
-    width: auto; /* Automatically adjusts to content */
-    max-width: 150px; /* Maximum width to control length */
-    text-align: center; /* Ensure text is centered */
-}
-
-.left-side button:hover {
-    background-color: rgb(99, 58, 58); /* Darker purple on hover */
-    transform: translateY(-2px); /* Slightly reduced lift effect */
-}
-
-.header_section {
-  background-color: #1a2e35;
-  padding: 10px 0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.navbar-brand {
-  display: flex;
-  align-items: center;
-  color: #fff;
-  font-size: 20px;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.navbar-brand img {
-  width: 50px;
-  margin-right: 10px;
-}
-
-.navbar-nav {
-  display: flex;
-  align-items: center;
-}
-
-.navbar-nav .nav-item {
-  margin: 0 10px;
-}
-
-.navbar-nav .nav-link {
-  color: #fff;
-  font-size: 16px;
-  text-decoration: none;
-  padding: 5px 10px;
-  transition: 0.3s;
-}
-
-.navbar-nav .nav-link:hover {
-  background-color: #495057;
-  border-radius: 5px;
-}
-
-.navbar-toggler {
-  border: none; /* Remove border around the toggle button */
-  background-color: #fff; /* White background for visibility */
-}
-
-.navbar-toggler-icon {
-  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"%3E%3Cpath stroke="rgba%28100, 100, 100, 0.5%29" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
-}
-
-
- /* Small Page Design */
- .small-page {
-      background-color: #32d0c5;
-      margin: 20px auto;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      max-width: 80%;
-      text-align: center;
-    }
-
-    .small-page h2 {
-      font-size: 24px;
-      font-family: 'Georgia', serif;
-      color: #333333;
-      margin-bottom: 20px;
-    }
-
-    .small-page p {
-      font-size: 16px;
-      color: #555555;
-      line-height: 1.6;
-    }
-
-    .small-page .cta-btn {
-      display: inline-block;
-      padding: 12px 25px;
-      margin-top: 20px;
-      font-size: 16px;
-      color: #f9f5f5;
-      background-color: #ff4f5a;
-      border: none;
-      border-radius: 5px;
-      text-decoration: none;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-
-    .small-page .cta-btn:hover {
-      background-color: #159f96;
-      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-    }
-
-
-
-/* Responsive Design for Medium Screens */
-@media (max-width: 992px) {
-    .container {
-        flex-direction: column; /* Stack left-side and right-side vertically */
-        gap: 30px; /* Adjust spacing between sections */
-        padding: 20px;
-    }
-
-    .left-side, .right-side {
-        width: 100%; /* Take full width for smaller screens */
-        max-width: 100%;
-        padding: 15px; /* Add padding for better appearance */
-    }
-
-    .update-box {
-        flex-direction: column; /* Stack image and text vertically */
-        align-items: center;
-        text-align: center;
-    }
-
-    .update-photo {
-        width: 80px; /* Adjust image size */
-        height: 80px;
-    }
-
-    .update-title {
-        font-size: 16px; /* Reduce font size */
-        padding: 10px;
-    }
-}
-
-/* Responsive Design for Small Screens */
-@media (max-width: 768px) {
-    .small-page {
-        max-width: 90%; /* Reduce the width for better fitting */
-        padding: 20px;
-    }
-
-    .small-page h2 {
-        font-size: 20px; /* Adjust font size */
-    }
-
-    .small-page p {
-        font-size: 14px;
-    }
-
-    .container {
-        gap: 20px; /* Reduce spacing between sections */
-    }
-
-    .left-side button {
-        font-size: 12px;
-        padding: 8px 10px; /* Adjust padding for smaller buttons */
-    }
-
-    .update-photo1 {
-        width: 100px; /* Adjust left-side images */
-        height: 100px;
-    }
-}
-
-/* Responsive Design for Extra Small Screens */
-@media (max-width: 576px) {
-    .navbar-brand span {
-        font-size: 16px; /* Reduce logo text size */
-    }
-
-    .navbar-nav .nav-link {
-        font-size: 14px;
-        padding: 5px;
-    }
-
-    .update-box {
-        flex-direction: column; /* Stack image and text */
-        gap: 10px;
-    }
-
-    .update-photo {
-        width: 60px; /* Smaller image size */
-        height: 60px;
-    }
-
-    .update-title {
-        font-size: 14px;
-        padding: 8px;
-    }
-
-    .left-side h2 {
-        font-size: 16px; /* Smaller font size for headers */
-    }
-
-    .left-side p {
-        font-size: 12px; /* Smaller font size for text */
-    }
-
-    .left-side button {
-        font-size: 10px;
-        padding: 6px 8px; /* Compact buttons */
-    }
-}
-
-
-</style>
-
-
 <body>
 
   <header class="header_section">
     <div class="container-fluid">
-      <nav class="navbar navbar-expand-lg custom_nav-container">
-        <!-- Logo and Brand -->
-        <a class="navbar-brand" href="index.html">
-          <img src="images/logo.png" alt="Logo" />
-          <span>தமிழ் நாற்று</span>
-        </a>
-  
-        <!-- Hamburger Button for Small Devices -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-  
-        <!-- Navigation Links -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">முகப்பு</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">கட்டுரைகள்</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="work.html">இலக்கியம்</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="category.html">பொது அறிவு</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+            <!-- Logo -->
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Logo" />
+                <span>தமிழ் நாற்று</span>
+            </a>
+            <!-- Toggler Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Collapsed Navigation Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">முகப்பு</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">கட்டுரைகள்</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="work.html">இலக்கியம்</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="category.html">பொது அறிவு</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
-  </header>
+</header>
+
   
   
 
@@ -473,60 +119,56 @@ body {
   
  
 
-  <div class="container">
-    <!-- Left Side -->
-    <div class="left-side">
-        <div>
-            <img src="v.jpg" alt="Update 1" class="update-photo1">
-            <div class="content">
-            <h2 class="updates-header">திருக்குறளில் அரசியல் சிந்தனைகள்</h2>
-            <p>நீதி இலக்கியங்களுள் திருக்குறள் அரசியல் பற்றி பேசும்பொழுது, மொழி, இனம், மதம், நாடு போன்றவற்றைச் சாராமல்...</p>
-           
-            <button>மேலும் வாசிக்க</button>
+      <div class="container">
+        <!-- Left Side -->
+        <div class="left-side" id="leftContent">
+            <div>
+                <img src="images/v.jpg" alt="Update 1" class="update-photo1">
+                <div class="content">
+                    <h2 class="updates-header">திருக்குறளில் அரசியல் சிந்தனைகள்</h2>
+                    <p>நீதி இலக்கியங்களுள் திருக்குறள் அரசியல் பற்றி பேசும்பொழுது, மொழி, இனம், மதம், நாடு போன்றவற்றைச் சாராமல்...</p>
+                    <button>மேலும் வாசிக்க</button>
+                </div>
+            </div>
+            <div>
+                <img src="images/kat.jpg" alt="Update 2" class="update-photo1">
+                <div class="content">
+                    <h2 class="updates-header">திருக்குறள் ஆய்வுக்கட்டுரைகள்</h2>
+                    <p>திருக்குறள். ஆய்வுக் கட்டுரைகள். தொகுப்பு-II. வெளியீடு : பண்பாட்டலுவல்கள் திணைக்களம்,. கல்வி, பண்பாட்டலுவல்கள்....</p>
+                    <button>மேலும் வாசிக்க</button>
+                </div>
+            </div>
+            <div>
+                <img src="images/books.png" alt="Update 2" class="update-photo1">
+                <div class="content">
+                    <h2 class="updates-header">திருக்குறளின் பெருமையை கூறும் நூல்கள்</h2>
+                    <p>திருக்குறளின் பெருமையை விளக்கும் நூல் திருவள்ளுவமாலை · திருவள்ளுவ மாலை எனும் நூல் திருக்குறளின் பெருமைகளையும்....</p>
+                    <button>மேலும் வாசிக்க</button>
+                </div>
             </div>
         </div>
-        <div>
-            <img src="images/kat.jpg" alt="Update 2" class="update-photo1">
-            <div class="content">
-            <h2 class="updates-header">திருக்குறள் ஆய்வுக்கட்டுரைகள்</h2>
-            <p>திருக்குறள். ஆய்வுக் கட்டுரைகள். தொகுப்பு-II. வெளியீடு : பண்பாட்டலுவல்கள் திணைக்களம்,. கல்வி, பண்பாட்டலுவல்கள்....</p>
-            
-            <button>மேலும் வாசிக்க</button>
+    
+        <!-- Right Side -->
+        <div class="right-side" id="updateList">
+            <div class="update-box" data-id="1">
+                <img src="images/thiru.jpg" alt="Update 1" class="update-photo">
+                <div class="update-title">திருக்குறள்</div>
             </div>
+            <div class="update-box" data-id="2">
+                <img src="images/cine.jpg" alt="Update 2" class="update-photo">
+                <div class="update-title">சினிமா</div>
+            </div>
+            <div class="update-box" data-id="3">
+              <img src="images/books.png" alt="Update 2" class="update-photo">
+              <div class="update-title">சிறுகதை</div>
+          </div>
+          <div class="update-box" data-id="">
+            <img src="images/brain.png" alt="Update 2" class="update-photo">
+            <div class="update-title">பொது அறிவு</div>
         </div>
-        <div>
-          <img src="images/books.png" alt="Update 2" class="update-photo1">
-        <div class="content">
-          <h2 class="updates-header">திருக்குறளின் பெருமையை கூறும் நூல்கள்</h2>
-          <p>திருக்குறளின் பெருமையை விளக்கும் நூல் திருவள்ளுவமாலை · திருவள்ளுவ மாலை எனும் நூல் திருக்குறளின் பெருமைகளையும்....</p>
-          
-          <button>மேலும் வாசிக்க</button>
         </div>
-      </div>
-      
     </div>
-
-    <!-- Right Side -->
-    <div class="right-side" id="updateList">
-        <div class="update-box">
-            <img src="images/thiru.jpg" alt="Update 1" class="update-photo">
-            <div class="update-title">திருக்குறள்</div>
-        </div>
-        <div class="update-box">
-            <img src="images/book.png" alt="Update 2" class="update-photo">
-            <div class="update-title">சிறுகதை</div>
-        </div>
-        <div class="update-box">
-          <img src="images/brain.png" alt="Update 1" class="update-photo">
-          <div class="update-title">பொது அறிவு</div>
-      </div>
-      <div class="update-box">
-        <img src="images/cine.jpg" alt="Update 1" class="update-photo">
-        <div class="update-title"> சினிமா</div>
-    </div>
-
-    </div>
-</div>
+    
 
 <!--end category section-->
 
@@ -574,7 +216,103 @@ body {
 
   
   <!-- end  footer section -->
+<script>
+  // Define content for each update
+const updates = {
+    1: `
+        <div>
+            <img src="images/v.jpg" alt="Update 1" class="update-photo1">
+            <div class="content">
+                <h2 class="updates-header">திருக்குறளில் அரசியல் சிந்தனைகள்</h2>
+                <p>நீதி இலக்கியங்களுள் திருக்குறள் அரசியல் பற்றி பேசும்பொழுது, மொழி, இனம், மதம், நாடு போன்றவற்றைச் சாராமல்...</p>
+                <button>மேலும் வாசிக்க</button>
+            </div>
+        </div>
+        <div>
+            <img src="images/kat.jpg" alt="Update 2" class="update-photo1">
+            <div class="content">
+                <h2 class="updates-header">திருக்குறள் ஆய்வுக்கட்டுரைகள்</h2>
+                <p>திருக்குறள். ஆய்வுக் கட்டுரைகள். தொகுப்பு-II. வெளியீடு : பண்பாட்டலுவல்கள் திணைக்களம்,. கல்வி, பண்பாட்டலுவல்கள்....</p>
+                <button>மேலும் வாசிக்க</button>
+            </div>
+        </div>
+        <div>
+            <img src="images/books.png" alt="Update 2" class="update-photo1">
+            <div class="content">
+                <h2 class="updates-header">திருக்குறளின் பெருமையை கூறும் நூல்கள்</h2>
+                <p>திருக்குறளின் பெருமையை விளக்கும் நூல் திருவள்ளுவமாலை · திருவள்ளுவ மாலை எனும் நூல் திருக்குறளின் பெருமைகளையும்....</p>
+                <button>மேலும் வாசிக்க</button>
+            </div>
+        </div>
+    `,
+    2: `
+        <div>
+            <img src="images/siva.jpeg" alt="Cine Update" class="update-photo1">
+            <div class="content">
+                <h2 class="updates-header">சிவகார்த்திகேயனுடன் கூட்டணி ? சிவா சொன்ன தகவல்.</h2>
+                <p> இந்நிலையில் சிவா அடுத்ததாக மீண்டும் அஜித்தை வைத்து ஒரு படத்தை இயக்கவுள்ளார் என தகவல் வந்துள்ளது. இதற்கிடையில்...</p>
+                <button>மேலும் வாசிக்க</button>
+            </div>
+        </div>
+      <div>
+            <img src="images/goat.jpeg" alt="Cine Update" class="update-photo1">
+            <div class="content">
+                <h2 class="updates-header">விஜய்யின் GOAT படத்தில் நடிக்க மறுத்த நயன்தாரா.</h2>
+                <p>  தன் கோட் படத்தில் நடிக்குமாறு சினேகா அல்ல நயன்தாராவிடம் தான் முதலில் கேட்டிருக்கிறார் வெங்கட் பிரபு. அவர்...</p>
+                <button>மேலும் வாசிக்க</button>
+            </div>
+        </div>
+      <div>
+            <img src="images/kang.jpeg" alt="Cine Update" class="update-photo1">
+            <div class="content">
+                <h2 class="updates-header">நெகட்டிவிட்டிக்கு தான் ரீச் அதிகம்..கங்குவா.</h2>
+                <p>  நெகட்டிவிட்டிக்கு தான் ரீச் அதிகம்..கங்குவா படத்தை பார்த்துவிட்டு சூரி சொன்ன விமர்சனம்...</p>
+                <button>மேலும் வாசிக்க</button>
+            </div>
+        </div>    
 
+        `,
+    3: `
+        <div>
+            <img src="images/nangil.jpg" alt="Cine Update" class="update-photo1">
+            <div class="content">
+                <h2 class="updates-header">நாஞ்சில் நாடன் சிறுகதை.</h2>
+                <p> நாஞ்சில்நாடன் சிறுகதைகள். கி.ராஜநாராயணன் சிறுகதைகள். ஆனந்த விகடன் லேட்டஸ்ட் சிறுகதைகள்</p>
+                <button>மேலும் வாசிக்க</button>
+            </div>
+        </div>
+      <div>
+            <img src="images/ammai1.jpeg" alt="Cine Update" class="update-photo1">
+            <div class="content">
+                <h2 class="updates-header">அம்மை அழைப்பு - சிறுகதை.</h2>
+                <p>  கொலை நகரமான டீ எஸ்டேட்' : எரியும் பனிக்காடு புத்தக பின்னணி| My Vikatan · சொர்க்கம்</p>
+                <button>மேலும் வாசிக்க</button>
+            </div>
+        </div>
+      <div>
+            <img src="images/apple.jpg" alt="Cine Update" class="update-photo1">
+            <div class="content">
+                <h2 class="updates-header">ஆப்பிள் கன்னங்களும் ...அபூர்வ ...</h2>
+                <p>  இது 'சிறுகதை விமர்சனப்போட்டி'க்கான கதை. விமர்சனங்கள் வந்து சேர வேண்டிய....</p>
+                <button>மேலும் வாசிக்க</button>
+            </div>
+        </div> 
+
+        
+
+    `
+};
+
+// Event listener for update boxes
+document.querySelectorAll(".update-box").forEach((box) => {
+    box.addEventListener("click", () => {
+        const id = box.getAttribute("data-id"); // Get the data-id of the clicked box
+        const leftContent = document.getElementById("leftContent");
+        leftContent.innerHTML = updates[id]; // Update the left side content
+    });
+});
+
+</script>
 
   
 
