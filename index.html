@@ -36,6 +36,10 @@ label.logo {
   padding: 0 100px;
   font-weight: bold;
 }
+label.logo img {
+  height: 50px;
+  margin-right: 10px;
+}
 nav ul {
   float: right;
   margin-right: 20px;
@@ -73,6 +77,10 @@ a:hover {
 @media (max-width: 1050px) {
   label.logo {
     padding-left: 30px;
+    font-size: 20px;
+  }
+  label.logo img {
+    height: 35px;
   }
   nav ul li a {
     font-size: 16px;
@@ -117,6 +125,7 @@ a:hover {
 
 }
 
+
 /* Responsive media query code for small screen */
 
 
@@ -137,11 +146,15 @@ a:hover {
             <i class="fas fa-bars"></i>
           </label>
           <!-- Site logo -->
+          
+           <label class="logo">
             
-          <label class="logo">தமிழ் நாற்று</label>
+           <img src="images/logo.png" alt="Logo">
+            தமிழ் நாற்று
+          </label>
           <!-- Navigation links -->
           <ul>
-            <li><a class="active" href="#">முகப்பு</a></li>
+            <li><a class="" href="#">முகப்பு</a></li>
             <li><a href="#">கட்டுரைகள்</a></li>
             <li><a href="#">இலக்கியம்</a></li>
             <li><a href="#">பொது அறிவு</a></li>
@@ -223,9 +236,11 @@ a:hover {
       <div class="container">
         <!-- Left Side -->
         <div class="left-side" id="leftContent">
-          <h2>சமீபத்திய புதிப்பிப்புகள் </h2>
-          <p>சமீபத்திய புதிப்பிப்புகளை காண வலது பக்கத்தில் தலைப்புகளை அழுத்தவும்.</p>
-            <!--div>
+          <h2 style="text-align: center; font-weight: bold;">சமீபத்திய புதிப்பிப்புகள்</h2>
+
+
+          
+            <div>
                 <img src="images/v.jpg" alt="Update 1" class="update-photo1">
                 <div class="content">
                     <h2 class="updates-header">திருக்குறளில் அரசியல் சிந்தனைகள்</h2>
@@ -234,21 +249,21 @@ a:hover {
                 </div>
             </div>
             <div>
-                <img src="images/kat.jpg" alt="Update 2" class="update-photo1">
+                <img src="images/siva.jpeg" alt="Update 2" class="update-photo1">
                 <div class="content">
-                    <h2 class="updates-header">திருக்குறள் ஆய்வுக்கட்டுரைகள்</h2>
-                    <p>திருக்குறள். ஆய்வுக் கட்டுரைகள். தொகுப்பு-II. வெளியீடு : பண்பாட்டலுவல்கள் திணைக்களம்,. கல்வி, பண்பாட்டலுவல்கள்....</p>
+                    <h2 class="updates-header">சிவகார்த்திகேயனுடன் கூட்டணி ? சிவா சொன்ன தகவல்.</h2>
+                    <p>இந்நிலையில் சிவா அடுத்ததாக மீண்டும் அஜித்தை வைத்து ஒரு படத்தை இயக்கவுள்ளார் என தகவல் வந்துள்ளது. இதற்கிடையில்...</p>
                     <button>மேலும் வாசிக்க</button>
                 </div>
             </div>
             <div>
-                <img src="images/books.png" alt="Update 2" class="update-photo1">
+                <img src="images/ammai1.jpeg" alt="Update 2" class="update-photo1">
                 <div class="content">
-                    <h2 class="updates-header">திருக்குறளின் பெருமையை கூறும் நூல்கள்</h2>
-                    <p>திருக்குறளின் பெருமையை விளக்கும் நூல் திருவள்ளுவமாலை · திருவள்ளுவ மாலை எனும் நூல் திருக்குறளின் பெருமைகளையும்....</p>
+                    <h2 class="updates-header">அம்மை அழைப்பு - சிறுகதை.</h2>
+                    <p>கொலை நகரமான டீ எஸ்டேட்' : எரியும் பனிக்காடு புத்தக பின்னணி| My Vikatan · சொர்க்கம்</p>
                     <button>மேலும் வாசிக்க</button>
                 </div>
-            </div-->
+            </div>
         </div>
     
         <!-- Right Side -->
