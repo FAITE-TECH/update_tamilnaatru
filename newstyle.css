@@ -147,154 +147,96 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.navbar-brand {
-  display: flex;
-  align-items: center;
-  color: #fff;
-  font-size: 20px;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.navbar-brand img {
-  width: 50px;
-  margin-right: 10px;
-}
-
-.navbar-nav {
-  display: flex;
-  align-items: center;
-}
-
-.navbar-nav .nav-item {
-  margin: 0 10px;
-}
-
-.navbar-nav .nav-link {
-  color: #fff;
-  font-size: 16px;
-  text-decoration: none;
-  padding: 10px 15px;
-     transition: background-color 0.3s, color 0.3s;
-}
-
-.navbar-nav .nav-link:hover {
-  background-color: #495057;
-  border-radius: 5px;
-}
-
-.navbar-toggler {
-  border: none; /* Remove border around the toggle button */
-  background-color: #fff; /* White background for visibility */
-}
-
-.navbar-toggler-icon {
-  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"%3E%3Cpath stroke="rgba%28100, 100, 100, 0.5%29" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
-}
-
-/* Add this for small devices */
-@media (max-width: 768px) {
-    .navbar-collapse {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 80%; /* Adjust width as needed */
-        background-color: #1a2e35;
-        height: 100vh;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-    }
-
-    .navbar-collapse.show {
-        transform: translateX(0); /* Show on toggle */
-    }
-
-    .navbar-brand {
-        position: absolute;
-        right: 10px; /* Align to the right */
-        top: 20px;  /* Adjust as per your design */
-    }
-
-    .navbar-nav {
-        flex-direction: column;
-        padding-top: 60px; /* Adjust for logo height */
-        text-align: left; /* Align links to the left */
-    }
-
-    .navbar-nav .nav-item {
-        margin: 15px 0; /* Space out the nav links */
-    }
-
-    .navbar-nav .nav-link {
-        font-size: 18px;
-        color: #fff;
-    }
-
-    .navbar-toggler {
-        position: absolute;
-        right: 10px; /* Position toggler on the right side */
-        top: 20px; /* Align toggler */
-    }
-}
-
-@media (min-width: 769px) {
-    .navbar-collapse {
-        display: flex !important; /* Ensure it's visible */
-    }
-}
-
-
-
 
  /* Small Page Design */
- .small-page {
-      background-color: #32d0c5;
-      margin: 20px auto;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      max-width: 80%;
-      text-align: center;
-    }
+.small-page {
+    background-color: #32d0c5;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    text-align: left;
+}
 
-    .small-page h2 {
-      font-size: 24px;
-      font-family: 'Georgia', serif;
-      color: #333333;
-      margin-bottom: 20px;
-    }
+.content-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
 
-    .small-page p {
-      font-size: 16px;
-      color: #555555;
-      line-height: 1.6;
-    }
+.text-section {
+    flex: 1 1 60%;
+    padding: 20px;
+}
 
-    .small-page .cta-btn {
-      display: inline-block;
-      padding: 12px 25px;
-      margin-top: 20px;
-      font-size: 16px;
-      color: #f9f5f5;
-      background-color: #ff4f5a;
-      border: none;
-      border-radius: 5px;
-      text-decoration: none;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
+.text-section h2 {
+    font-size: 26px;
+    font-family: 'Georgia', serif;
+    color: #222222;
+    margin-bottom: 20px;
+}
 
-    .small-page .cta-btn:hover {
-      background-color: #159f96;
-      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-    }
+.text-section p {
+    font-size: 16px;
+    color: #333333;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.text-section .thirukkural {
+    font-size: 18px;
+    font-style: italic;
+    font-family: 'Tamil Sangam MN', 'Georgia', serif;
+    color: #1a1a1a;
+    border-left: 4px solid #ff4f5a;
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+.text-section .cta-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-top: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #ff4f5a;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.text-section .cta-btn:hover {
+    background-color: #159f96;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.image-section {
+    flex: 1 1 30%;
+    text-align: center;
+}
+
+.image-section .valluvar-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.image-section .valluvar-img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
 
 
 
@@ -329,33 +271,32 @@ body {
     }
 }
 
-/* Responsive Design for Small Screens */
+/* Responsive Design for Smaller Screens */
 @media (max-width: 768px) {
-    .small-page {
-        max-width: 90%; /* Reduce the width for better fitting */
-        padding: 20px;
+    .content-container {
+        flex-direction: column;
+        align-items: center;
     }
 
-    .small-page h2 {
-        font-size: 20px; /* Adjust font size */
+    .text-section, .image-section {
+        flex: 1 1 100%;
+        text-align: center;
     }
 
-    .small-page p {
+    .text-section h2 {
+        font-size: 22px;
+    }
+
+    .text-section p {
         font-size: 14px;
     }
 
-    .container {
-        gap: 20px; /* Reduce spacing between sections */
+    .text-section .thirukkural {
+        font-size: 16px;
     }
 
-    .left-side button {
-        font-size: 12px;
-        padding: 8px 10px; /* Adjust padding for smaller buttons */
-    }
-
-    .update-photo1 {
-        width: 100px; /* Adjust left-side images */
-        height: 100px;
+    .image-section .valluvar-img {
+        width: 70%;
     }
 }
 
