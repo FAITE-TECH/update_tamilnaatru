@@ -192,11 +192,6 @@ nav ul li .dropdown-content li a:hover {
 
 
 
-    . h2 {
-      font-size: 18px;
-      color: #222;
-      margin-bottom: 10px;
-    }
 
     
 
@@ -235,6 +230,7 @@ nav ul li .dropdown-content li a:hover {
   }
   nav ul li a {
     font-size: 20px;
+    gap: 15px;
   }
   a:hover,
   a.active {
@@ -363,7 +359,7 @@ nav ul li .dropdown-content li a:hover {
           <!-- Left Side -->
           <div class="left-side" id="leftContent">
               <h2 style="text-align: center; font-weight: bold;">சமீபத்திய புதிப்பிப்புகள்</h2>
-             <?php include 'fetch_latest_uploads.php'; ?>
+             
           </div>
       
       
@@ -371,21 +367,21 @@ nav ul li .dropdown-content li a:hover {
         <!-- Right Side -->
 <!-- Right Side: Buttons -->
 <div class="right-side" id="updateList">
-        <div class="update-box" onclick="fetchArticles('திருக்குறள்')">
+        <div class="update-box" onclick="fetchArticles('திருக்குறள்')" style="border: 2px solid #121111;">
             <img src="images/thiru.jpg" alt="திருக்குறள்" class="update-photo">
             <div class="update-title">திருக்குறள்</div>
         </div>
-        <div class="update-box" onclick="fetchArticles('சினிமா')">
+        <div class="update-box" onclick="fetchArticles('சினிமா')" style="border: 2px solid #121111;">
             <img src="images/cine.jpg" alt="சினிமா" class="update-photo">
             <div class="update-title">சினிமா</div>
         </div>
        
-        <div class="update-box" onclick="fetchArticles('சிறுகதை')">
+        <div class="update-box" onclick="fetchArticles('சிறுகதை')" style="border: 2px solid #121111;">
             <img src="images/books.png" alt="சிறுகதை" class="update-photo">
             <div class="update-title">சிறுகதை</div>
         </div>
-        <div class="update-box">
-            <img src="images/brain.png" alt="பொது அறிவு" class="update-photo">
+        <div class="update-box" onclick="fetchArticles('பொது அறிவு')" style="border: 2px solid #121111;">
+            <img src="images/brain.png" alt="பொது அறிவு" class="update-photo" >
             <div class="update-title">பொது அறிவு</div>
         </div>
     </div>
@@ -442,14 +438,45 @@ nav ul li .dropdown-content li a:hover {
 
 <script>
 
-// Event listener for update boxes
-document.querySelectorAll(".update-box").forEach((box) => {
-    box.addEventListener("click", () => {
-        const id = box.getAttribute("data-id"); // Get the data-id of the clicked box
-        const leftContent = document.getElementById("leftContent");
-        leftContent.innerHTML = updates[id]; // Update the left side content
-    });
+  // Select the checkbox and menu button
+const checkbtn = document.querySelector(".checkbtn");
+const navMenu = document.querySelector("nav ul");
+
+// Add click event listener to the menu button
+checkbtn.addEventListener("click", () => {
+  // Toggle the 'active' class on the nav menu
+  navMenu.classList.toggle("active");
+
+  // Toggle the 'cross' class on the menu button
+  checkbtn.classList.toggle("cross");
 });
+
+
+// Fetch latest uploads using AJAX
+fetch('fetch_latest_uploads.php')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Failed to fetch updates.");
+                }
+                return response.text(); // Get the PHP output as text
+            })
+            .then(data => {
+                // Insert the fetched content into the leftContent div
+                document.getElementById('leftContent').innerHTML += data;
+
+                // Add event listeners to the dynamically added update boxes
+                document.querySelectorAll(".update-box").forEach((box) => {
+                    box.addEventListener("click", () => {
+                        const id = box.getAttribute("data-id"); // Get the data-id of the clicked box
+                        const leftContent = document.getElementById("leftContent");
+                        leftContent.innerHTML = updates[id]; // Update the left side content
+                    });
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('leftContent').innerHTML += '<p>Error loading updates.</p>';
+            });
 
 //searching
 document.querySelector('.search-bar-container form').addEventListener('submit', function (event) {

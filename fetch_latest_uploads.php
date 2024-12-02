@@ -10,7 +10,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         // Display each upload dynamically
-        echo '<div>
+        echo '<div class="update-box" data-id="' . htmlspecialchars($row['title']) . '">
                 <img src="' . htmlspecialchars($row['image_path']) . '" alt="' . htmlspecialchars($row['title']) . '" class="update-photo1">
                 <div class="content">
                     <h2 class="updates-header">' . htmlspecialchars($row['title']) . '</h2>
@@ -25,6 +25,4 @@ if ($result->num_rows > 0) {
 
 // Close the database connection
 $conn->close();
-
-
 ?>
