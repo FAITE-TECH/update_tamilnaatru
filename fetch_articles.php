@@ -35,9 +35,13 @@ if ($stmt->execute()) {
     if ($result->num_rows > 0) {
         $articles = [];
         while ($row = $result->fetch_assoc()) {
-            $articles[] = $row;
+            $articles[] = [
+                'id' => $row['id'], // Ensure 'id' is included in the query
+                'title' => $row['title'],
+                'image_path' => $row['image_path'],
+                'content' => $row['content']
+            ];
         }
-
         // Return articles as JSON
         echo json_encode($articles);
     } else {
