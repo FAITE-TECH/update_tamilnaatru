@@ -3,79 +3,82 @@
 include 'connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Sanitize the received data
     $category = mysqli_real_escape_string($conn, $_POST['category']);
     $title = mysqli_real_escape_string($conn, $_POST['title']);
-    $content = mysqli_real_escape_string($conn, $_POST['content']);
-    $targetDir = "uploads/";
-    $fileName = basename($_FILES['image']['name']);
-    $targetFilePath = $targetDir . $fileName;
-    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+    $content = mysqli_real_escape_string($conn, $_POST['content']); // Content from the editor
 
+
+    $targetDir = "uploads/";
+    $image1Name = basename($_FILES['image1']['name']);
+    $image1Path = $targetDir . $image1Name;
+    $fileType1 = pathinfo($image1Path, PATHINFO_EXTENSION);
+
+    $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
+
+    // Ensure uploads directory exists
     if (!is_dir($targetDir)) {
         mkdir($targetDir, 0777, true);
     }
 
-    $allowedTypes = array('jpg', 'jpeg', 'png', 'gif');
+    // Handle the first image (required)
+    if (in_array(strtolower($fileType1), $allowedTypes)) {
+        if (move_uploaded_file($_FILES['image1']['tmp_name'], $image1Path)) {
+            // Initialize $image2Path as NULL in case no second image is uploaded
+            $image2Path = null;
 
-    if (in_array(strtolower($fileType), $allowedTypes)) {
-        if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFilePath)) {
-            $sql = "INSERT INTO uploads (category, title, image_path, content) VALUES (?, ?, ?, ?)";
+            // Handle the second image (optional)
+            if (isset($_FILES['image2']) && !empty($_FILES['image2']['name'])) {
+                $image2Name = basename($_FILES['image2']['name']);
+                $image2Path = $targetDir . $image2Name;
+                $fileType2 = pathinfo($image2Path, PATHINFO_EXTENSION);
+
+                if (in_array(strtolower($fileType2), $allowedTypes)) {
+                    if (!move_uploaded_file($_FILES['image2']['tmp_name'], $image2Path)) {
+                        $image2Path = null; // Reset to NULL if upload fails
+                    }
+                } else {
+                    $image2Path = null; // Reset to NULL if file type is invalid
+                }
+            }
+
+            // Insert data into the database
+            $sql = "INSERT INTO uploads (category, title, image_path, image2_path, content) VALUES (?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param('ssss', $category, $title, $targetFilePath, $content);
+            $stmt->bind_param('sssss', $category, $title, $image1Path, $image2Path, $content);
 
             if ($stmt->execute()) {
-                // SweetAlert success
-                echo "<script>
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Success',
-                            text: 'File uploaded and data saved successfully!',
-                            confirmButtonText: 'OK'
-                        }).then(() => {
-                            window.location.href = 'your_redirect_page.php';
-                        });
-                      </script>";
+                // Display success message
+                echo "<!DOCTYPE html>
+                      <html>
+                      <head>
+                          <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+                      </head>
+                      <body>
+                          <script>
+                              Swal.fire({
+                                  icon: 'success',
+                                  title: 'வெற்றி',
+                                  text: 'உங்களின் ஆக்கம் வெற்றிகரமாக சேமிக்கப்பட்டது!',
+                                  confirmButtonText: 'சரி'
+                              }).then(() => {
+                                  window.location.href = 'upload.php';
+                              });
+                          </script>
+                      </body>
+                      </html>";
             } else {
-                // SweetAlert error
-                echo "<script>
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Database Error',
-                            text: '" . addslashes($stmt->error) . "',
-                            confirmButtonText: 'OK'
-                        });
-                      </script>";
+                echo "Database Error: " . $stmt->error;
             }
             $stmt->close();
         } else {
-            echo "<script>
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'Error uploading file.',
-                        confirmButtonText: 'OK'
-                    });
-                  </script>";
+            echo "Error uploading the first image.";
         }
     } else {
-        echo "<script>
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Invalid File',
-                    text: 'Only JPG, JPEG, PNG, and GIF files are allowed.',
-                    confirmButtonText: 'OK'
-                });
-              </script>";
+        echo "Invalid file type for the first image. Only JPG, JPEG, PNG, and GIF files are allowed.";
     }
 } else {
-    echo "<script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Invalid Request',
-                text: 'Invalid request method.',
-                confirmButtonText: 'OK'
-            });
-          </script>";
+    echo "Invalid request method.";
 }
 
 $conn->close();

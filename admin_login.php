@@ -11,10 +11,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($username === $admin_username && $password === $admin_password) {
         $_SESSION['admin_logged_in'] = true;
-        header('Location: upload.html'); // Redirect to the admin upload page
+        header('Location: upload.php'); // Redirect to the admin upload page
         exit;
     } else {
-        echo "<script>alert('தவறான பயனர் பெயர் அல்லது கடவுச்சொல்!');</script>";
+        // Display an alert before redirecting
+        echo "<script>
+                alert('தவறான பயனர் பெயர் அல்லது கடவுச்சொல்!');
+                window.location.href = 'login.html'; // Redirect to the login page after the alert
+              </script>";
+        exit;
     }
 }
 ?>
+

@@ -30,11 +30,11 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         // Display each upload dynamically
-        echo '<div class="update-box" "style=border:none" data-id="' . htmlspecialchars($row['id']) . '">
+        echo '<div class="update-box" style="border:none" data-id="' . htmlspecialchars($row['id']) . '">
                 <img src="' . htmlspecialchars($row['image_path']) . '" alt="' . htmlspecialchars($row['title']) . '" class="update-photo1">
                 <div class="content">
                     <h2 class="updates-header">' . htmlspecialchars($row['title']) . '</h2>
-                    <p>' . htmlspecialchars(substr($row['content'], 0, 150)) . '...</p>
+                    <p>' . htmlspecialchars(substr(strip_tags($row['content']), 0, 150)) . '...</p>
                     <a href="view.php?id=' . htmlspecialchars($row['id']) . '" class="cta-btn">மேலும் வாசிக்க</a>
                 </div>
               </div>';
@@ -45,4 +45,5 @@ if ($result->num_rows > 0) {
 
 // Close the database connection
 $conn->close();
+
 ?>
