@@ -262,6 +262,23 @@ nav ul li .dropdown-content li a:hover {
     color: #000;
 }
 
+.social-share {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-share a {
+    text-decoration: none;
+    font-size: 24px;
+    color: #1a2e35; /* Or any color of your choice */
+    transition: transform 0.2s ease-in-out;
+}
+
+.social-share a:hover {
+    color: #5f3434; /* Highlight color on hover */
+    transform: scale(1.2);
+}
 
 
 
@@ -367,36 +384,18 @@ nav ul li .dropdown-content li a:hover {
           <!-- Left Side -->
           <div class="left-side" id="leftContent">
               <h2 style="text-align: center; font-weight: bold;">சமீபத்திய புதிப்பிப்புகள்</h2>
-              
+
              
-          </div>
+   </div>
       
-      
+ 
+
     
         <!-- Right Side -->
 <!--Right Side: Buttons-->
 <div class="right-side" id="updateList">
 
 
-
-
-        <!--div class="update-box" onclick="fetchArticles('திருக்குறள்')" style="  border: 2px solid #121111;">
-            <img src="images/thiru.jpg" alt="திருக்குறள்" class="update-photo">
-            <div class="update-title">திருக்குறள்</div>
-        </div>
-        <div class="update-box" onclick="fetchArticles('சினிமா')" style="  border: 2px solid #121111;">
-            <img src="images/cine.jpg" alt="சினிமா" class="update-photo">
-            <div class="update-title">சினிமா</div>
-        </div>
-       
-        <div class="update-box" onclick="fetchArticles('சிறுகதை')" style="  border: 2px solid #121111;">
-            <img src="images/books.png" alt="சிறுகதை" class="update-photo">
-            <div class="update-title">சிறுகதை</div>
-        </div>
-        <div class="update-box" onclick="fetchArticles('பொது அறிவு')" style="  border: 2px solid #121111;">
-            <img src="images/brain.png" alt="பொது அறிவு" class="update-photo" >
-            <div class="update-title">பொது அறிவு</div>
-        </div-->
         <?php
 require_once('connect.php');
 
@@ -425,9 +424,6 @@ if ($result->num_rows > 0) {
 
     </div>
     
-
-<!--end category section-->
-<!--addnew button-->
 
 
 
@@ -553,67 +549,6 @@ document.querySelector('.search-bar-container form').addEventListener('submit', 
             searchResultsContainer.style.display = 'block'; // Show the container on error
         });
 });
-
-
-  
-  
- /*category
-  function fetchArticles(displayCategory) {
-    const categoryMapping = {
-        "திருக்குறள்": "Essay",
-        "சினிமா": "Literature",
-        "சிறுகதை": "Short Story",
-        "பொது அறிவு": "General Knowledge"
-    };
-
-    const category = categoryMapping[displayCategory];
-    if (!category) {
-        console.error("Invalid category selected:", displayCategory);
-        return;
-    }
-
-    const url = 'fetch_articles.php';
-    const articlesContainer = document.getElementById('leftContent');
-
-    // Show loading message
-    articlesContainer.innerHTML = '<p>Loading articles...</p>';
-
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ category: category }),
-    })
-        .then(response => response.json())
-        .then(data => {
-            if (data.error) {
-                articlesContainer.innerHTML = `<p>${data.error}</p>`;
-            } else {
-                const articlesHTML = data
-                    .map(
-                        article => `
-                        <div style="background-color: transparent; padding: 10px;">
-                            <img src="${article.image_path}" alt="${article.title}" class="update-photo1">
-                            <div class="content">
-                                <h2 class="updates-header">${article.title}</h2>
-                                <p>${article.content.substring(0, 150)}...</p>
-                                <a href="view.php?id=${article.id}" style="text-decoration: none; background-color: transparent; display: inline-block;">
-                                    <button>மேலும் வாசிக்க</button>
-                                </a>
-                            </div>
-                        </div>
-                    `
-                    )
-                    .join('');
-                articlesContainer.innerHTML = articlesHTML;
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching articles:', error);
-            articlesContainer.innerHTML = '<p>Failed to load articles.</p>';
-        });
-}*/
 
 
 function fetchArticles(category) {

@@ -346,7 +346,7 @@ nav ul li .dropdown-content li a:hover {
       <div class="container" style="display: flex; justify-content: center; align-items: center; ">     
           <!-- Left Side -->
           <div class="left-side" id="leftContent">
-              <h2 style="text-align: center; font-weight: bold;">உளவியல் ஆக்கங்கள்</h2>
+              <h2 style="text-align: center; font-weight: bold;">சிறுகதைகள்</h2>
 
 <?php
 // Include the database connection

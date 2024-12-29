@@ -29,6 +29,7 @@ form {
     max-width: 400px;
     width: 100%;
     box-sizing: border-box;
+    margin-bottom: 30px; /* Added margin-bottom to create space between form and container */
 }
 
 form label {
@@ -99,13 +100,142 @@ form input[type="number"] {
         font-size: 14px;
     }
 }
+/* General container for each update box */
+.update-box {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.update-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Style for the update photo */
+.update-photo1 {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+/* Content container */
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Header (Title) styling */
+.updates-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 10px;
+    color: #333;
+}
+
+/* Description (Preview text) styling */
+.content p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    margin: 0 0 15px;
+}
+
+/* Button styling */
+.cta-btn {
+    display: inline-block;
+    padding: 5px 20px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ff4f5a;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-btn:hover {
+    background-color: #e0434f;
+    transform: translateY(-2px);
+}
+
+/* Adjust container styles for additional spacing */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px; /* Optional: add some padding to the container */
+}
 
 </style>
 
 
+<div class="container" style="display: flex; justify-content: center; align-items: center;">     
+    <!-- Left Side -->
+    <div class="left-side" id="leftContent">
+        <h2 style="text-align: center; font-weight: bold;">பொத்தான்கள்</h2>
+
+        <?php
+        // Include the database connection
+        include 'connect.php'; // Ensure this file contains your DB connection details
+
+        // Query to fetch the latest uploads
+        $sql = "SELECT id, display_name, category_name, image_path, button_position FROM categories";
+        $result = $conn->query($sql);
+
+        // Check if any uploads exist
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                // Display each upload dynamically
+                echo '<div class="update-box" style="border:none; display: flex; align-items: center;" data-id="' . htmlspecialchars($row['id']) . '">
+                <img src="' . htmlspecialchars($row['image_path']) . '" alt="' . htmlspecialchars($row['display_name']) . '" class="update-photo1"> <!-- Changed title to display_name -->
+                <div class="content" style="flex-grow: 1;">
+                    <h2 class="updates-header">' . htmlspecialchars($row['category_name']) . '</h2>
+                </div>
+                <div style="display: flex; gap: 5px;">
+                    <form action="button_delete.php" method="GET" style="margin: 0;" onsubmit="return confirmDelete();">
+                        <input type="hidden" name="id" value="' . htmlspecialchars($row['id']) . '">
+                        <button type="submit" class="cta-btn" style="background-color:#e74c3c;">delete</button>
+                    </form>
+                </div>
+              </div>';
+        
+            }
+        } else {
+            echo '<p>சமீபத்திய புதுப்பிப்புகள் இல்லை.</p>';
+        }
+
+        // Close the database connection
+        $conn->close();
+        ?>
+    </div>
+</div>
+
+<script>
+    // JavaScript function to display a confirmation dialog
+    function confirmDelete() {
+        return confirm("இந்தக் கட்டுரையை நிச்சயமாக நீக்க விரும்புகிறீர்களா?");
+    }
+</script>
+
 
 <form method="POST" action="add_category.php" enctype="multipart/form-data">
-<h2 >பொத்தான்  வடிவமைப்பு</h2>
+    <h2 >பொத்தான்  வடிவமைப்பு</h2>
     <label>பொத்தான் பெயர்:</label>
     <input type="text" name="display_name" required>
     <label>பொத்தான் வகை:</label>
@@ -116,5 +246,10 @@ form input[type="number"] {
     <input type="number" name="button_position" required>
     <button type="submit">பொத்தானை சேர்க்க</button>
 </form>
+    </div>
+</div>
+
+
+
 </body>
 </html>

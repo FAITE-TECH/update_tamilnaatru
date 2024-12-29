@@ -346,7 +346,7 @@ nav ul li .dropdown-content li a:hover {
       <div class="container" style="display: flex; justify-content: center; align-items: center; ">     
           <!-- Left Side -->
           <div class="left-side" id="leftContent">
-              <h2 style="text-align: center; font-weight: bold;">உளவியல் ஆக்கங்கள்</h2>
+              <h2 style="text-align: center; font-weight: bold;">சினிமா சார்ந்த ஆக்கங்கள்</h2>
 
 <?php
 // Include the database connection
@@ -393,7 +393,7 @@ $conn->close();
         <div style="flex: 1; min-width: 250px; margin-bottom: 15px;">
             <h5>விரைவு இணைப்புகள்</h5>
             <ul style="list-style: none; padding: 0;">
-                <li><a href="#" style="color: #fff; text-decoration: none;">முகப்பு</a></li>
+                <li><a href="index.php" style="color: #fff; text-decoration: none;">முகப்பு</a></li>
                 <li><a href="#" style="color: #fff; text-decoration: none;">கட்டுரைகள்</a></li>
                 <li><a href="#" style="color: #fff; text-decoration: none;">இலக்கியம்</a></li>
                 <li><a href="#" style="color: #fff; text-decoration: none;">பொது அறிவு</a></li>
