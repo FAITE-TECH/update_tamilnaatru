@@ -385,7 +385,7 @@ nav ul li .dropdown-content li a:hover {
       <div style="flex: 1; min-width: 250px; margin-bottom: 15px;">
           <h6>விரைவு இணைப்புகள்</h6>
           <ul style="list-style: none; padding: 0;">
-              <li><a href="#" style="color: #fff; text-decoration: none;">முகப்பு</a></li>
+              <li><a href="index.php" style="color: #fff; text-decoration: none;">முகப்பு</a></li>
               <li><a href="#" style="color: #fff; text-decoration: none;">கட்டுரைகள்</a></li>
               <li><a href="#" style="color: #fff; text-decoration: none;">இலக்கியம்</a></li>
               <li><a href="#" style="color: #fff; text-decoration: none;">பொது அறிவு</a></li>
