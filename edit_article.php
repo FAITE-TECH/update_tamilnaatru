@@ -72,18 +72,16 @@ if (isset($_GET['id'])) {
                     color: #888;
                 }
             </style>
-            
-            <!-- TinyMCE Editor -->
-            <script src="https://cdn.tiny.cloud/1/pkcekgnae3x7xqzewo7ifa0skguqvked9ct9jxo8r8fhoq5r/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+           <!-- TinyMCE Editor -->
+   <script src="tinymce/tinymce.min.js"></script>
 
             <script>
                 tinymce.init({
-                    selector: '#editor',
-                    height: 400,
-                    plugins: 'advlist autolink link image lists charmap preview code',
-                    toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | preview code',
-                    content_css: 'https://www.tiny.cloud/css/codepen.min.css'
-                });
+    selector: '#editor',
+    height: 400,
+    plugins: 'advlist autolink link image lists charmap preview code',
+    toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | preview code'
+});
             </script>
         </head>
         <body>

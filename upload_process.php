@@ -8,6 +8,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = mysqli_real_escape_string($conn, $_POST['title']);
     $content = mysqli_real_escape_string($conn, $_POST['content']); // Content from the editor
 
+    
+    // Function to clean content in PHP
+function cleanContent($content) {
+    // Replace literal 'rn' or 'r', 'n' with a space
+    $content = str_replace(array('\\r\\n', '\\r', '\\n', 'rn'), ' ', $content);
+
+     // Remove escaped quotes (\" -> ")
+     $content = str_replace('\\"', '"', $content);
+
+    // Trim any leading/trailing whitespace
+    $content = trim($content);
+
+    return $content;
+}
+
+
+    // Clean the content before inserting it into the database
+    $content = cleanContent($content);
+
+    // Log the cleaned content for debugging (you can remove this after confirming the issue)
+    error_log("Cleaned Content: " . $content);
 
     $targetDir = "uploads/";
     $image1Name = basename($_FILES['image1']['name']);

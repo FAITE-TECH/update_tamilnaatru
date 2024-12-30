@@ -23,7 +23,10 @@
   <link rel="stylesheet" href="uploadstyle.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
    <!-- TinyMCE Editor -->
-   <script src="https://cdn.tiny.cloud/1/pkcekgnae3x7xqzewo7ifa0skguqvked9ct9jxo8r8fhoq5r/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+   <script src="tinymce/tinymce.min.js"></script>
+
+
+
 </head>
 <body class="sub_page">
   <style>
@@ -212,15 +215,22 @@ nav ul li .dropdown-content li a:hover {
     
     
       </style>
-      <script>
-   tinymce.init({
-                    selector: '#editor',
-                    height: 400,
-                    plugins: 'advlist autolink link image lists charmap preview code',
-                    toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | preview code',
-                    content_css: 'https://www.tiny.cloud/css/codepen.min.css'
-                });
-  </script>
+<script>
+  tinymce.init({
+    selector: '#editor',
+    height: 400,
+    plugins: 'advlist autolink link image lists charmap preview code',
+    toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | preview code',
+    forced_root_block: 'p',  // Ensures paragraphs are wrapped in <p> tags
+    font_formats: 'Poppins=“Poppins”, sans-serif; Latha="Latha", sans-serif; TamilMN="Tamil MN", sans-serif; Bamini="Bamini", sans-serif;', // Add Tamil font to the list
+    content_style: 'body { font-family: "Poppins", sans-serif; }', // Default font for body
+    content_css: [
+      'https://fonts.googleapis.com/css?family=Poppins|Latha|TamilMN|Bamini', // Add Tamil fonts to Google Fonts
+    ]
+});
+</script>
+
+
     </head>
     <body>
     
@@ -304,6 +314,8 @@ nav ul li .dropdown-content li a:hover {
             <option value="உளவியல்">உளவியல்</option>
             <option value="அரசியல்">அரசியல்</option>
             <option value="சமூகம்">சமூகம்</option>
+            <option value="தொழில்நுட்பம்">தொழில்நுட்பம்</option>
+            <option value="அரங்கியல்">அரங்கியல்</option>
         </optgroup>
 
         <!-- Dropdown group for 'இலக்கியம்' with subcategories -->
@@ -356,9 +368,8 @@ nav ul li .dropdown-content li a:hover {
         <input type="file" id="image2" name="image2" accept="image/*">
       </div>
 
-      <!-- Content Editor -->
-      
       <textarea id="editor" name="content"></textarea>
+
 
   
 
@@ -430,6 +441,20 @@ nav ul li .dropdown-content li a:hover {
     }
   });
 });
+
+// Clean up unwanted characters like \r\n and escaped quotes
+function cleanContent(content) {
+    // Remove unwanted line breaks (\r\n)
+    content = content.replace(/(\r\n|\n|\r)/gm, " ");
+    
+    // Remove escaped quotation marks (\")
+    content = content.replace(/\\"/g, '"');
+    
+    // Optionally, remove unwanted "lorem ipsum" text if it exists
+    content = content.replace(/lorem ipsum/g, '');
+
+    return content;
+}
 
 
 </script>
