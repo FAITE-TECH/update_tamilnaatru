@@ -99,8 +99,8 @@ if (isset($_GET['id'])) {
                             <option value="உளவியல்" <?php echo ($article['category'] == 'உளவியல்') ? 'selected' : ''; ?>>உளவியல்</option>
                             <option value="அரசியல்" <?php echo ($article['category'] == 'அரசியல்') ? 'selected' : ''; ?>>அரசியல்</option>
                             <option value="சமூகம்" <?php echo ($article['category'] == 'சமூகம்') ? 'selected' : ''; ?>>சமூகம்</option>
-                            <option value="தொழிநுட்பம்" <?php echo ($article['category'] == 'அரசியல்') ? 'selected' : ''; ?>>தொழிநுட்பம்</option>
-                            <option value="அரங்கியல்" <?php echo ($article['category'] == 'அரசியல்') ? 'selected' : ''; ?>>அரங்கியல்</option>
+                            <option value="தொழில்நுட்பம்" <?php echo ($article['category'] == 'தொழில்நுட்பம்') ? 'selected' : ''; ?>>தொழிநுட்பம்</option>
+                            <option value="அரங்கியல்" <?php echo ($article['category'] == 'அரங்கியல்') ? 'selected' : ''; ?>>அரங்கியல்</option>
                         </optgroup>
                         <optgroup label="இலக்கியம்">
                             <option value="சிறுகதை" <?php echo ($article['category'] == 'சிறுகதை') ? 'selected' : ''; ?>>சிறுகதை</option>
@@ -108,10 +108,10 @@ if (isset($_GET['id'])) {
                             <option value="சினிமா" <?php echo ($article['category'] == 'சினிமா') ? 'selected' : ''; ?>>சினிமா</option>
                         </optgroup>
                         <optgroup label="பொதுஅறிவு">
-                            <option value="இலங்கை" <?php echo ($article['category'] == 'சிறுகதை') ? 'selected' : ''; ?>>இலங்கை</option>
-                            <option value="இந்தியா" <?php echo ($article['category'] == 'கவிதை') ? 'selected' : ''; ?>>இந்தியா</option>
-                            <option value="உலகம்" <?php echo ($article['category'] == 'சினிமா') ? 'selected' : ''; ?>>உலகம்</option>
-                            <option value="தொழிநுட்பம்" <?php echo ($article['category'] == 'சினிமா') ? 'selected' : ''; ?>>தொழிநுட்பம்</option>
+                            <option value="இலங்கை" <?php echo ($article['category'] == 'இலங்கை') ? 'selected' : ''; ?>>இலங்கை</option>
+                            <option value="இந்தியா" <?php echo ($article['category'] == 'இந்தியா') ? 'selected' : ''; ?>>இந்தியா</option>
+                            <option value="உலகம்" <?php echo ($article['category'] == 'உலகம்') ? 'selected' : ''; ?>>உலகம்</option>
+                            <option value="தொழில்" <?php echo ($article['category'] == 'தொழில்') ? 'selected' : ''; ?>>தொழிநுட்பம்</option>
                         </optgroup>
                         <!-- Dynamic categories from the database -->
                         <?php

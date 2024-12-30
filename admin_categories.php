@@ -156,8 +156,8 @@ form input[type="number"] {
 /* Button styling */
 .cta-btn {
     display: inline-block;
-    padding: 5px 20px;
-    font-size: 12px;
+    padding: 10px 25px; /* Adjust padding for better touch targets */
+    font-size: 16px; /* Slightly larger font for better readability */
     font-weight: bold;
     color: #fff;
     background-color: #ff4f5a;
@@ -165,13 +165,31 @@ form input[type="number"] {
     border-radius: 5px;
     text-decoration: none;
     text-align: center;
-    width: 100%;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    max-width: 200px; /* Optional: Limit max width for smaller screens */
 }
 
+/* Hover effects */
 .cta-btn:hover {
     background-color: #e0434f;
     transform: translateY(-2px);
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .cta-btn {
+        padding: 8px 20px; /* Slightly smaller padding for small screens */
+        font-size: 14px;
+        max-width: 100%; /* Ensure button spans full width in smaller containers */
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-btn {
+        width: 90%; /* Fill almost the full width of smaller screens */
+        padding: 8px 15px;
+        font-size: 14px;
+    }
 }
 
 /* Adjust container styles for additional spacing */
@@ -229,7 +247,7 @@ form input[type="number"] {
 <script>
     // JavaScript function to display a confirmation dialog
     function confirmDelete() {
-        return confirm("இந்தக் கட்டுரையை நிச்சயமாக நீக்க விரும்புகிறீர்களா?");
+        return confirm("இந்தக் பொத்தானை நிச்சயமாக நீக்க விரும்புகிறீர்களா?");
     }
 </script>
 

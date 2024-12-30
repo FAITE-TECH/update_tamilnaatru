@@ -14,6 +14,7 @@
 
   <style>
     
+    
     * {
   padding: 0;
   margin: 0;
@@ -25,7 +26,7 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 nav {
-  background: #1a2e35;
+  background: #b90005;
   height: 80px;
   width: 100%;
 }
@@ -66,7 +67,7 @@ nav ul li a {
 a.active,
 a:hover {
   background: #495057;
-  color: #f5ecec;
+  color:rgb(14, 14, 14);
   transition: .5s;
 }
 
@@ -91,6 +92,7 @@ nav ul li.dropdown {
 
 nav ul li.dropdown:hover .dropdown-content {
   display: block;
+  
 }
 
 nav ul li .dropdown-content {
@@ -98,24 +100,29 @@ nav ul li .dropdown-content {
   position: absolute;
   top: 50px;  /* Aligns the dropdown directly below the navbar */
   left: 0;
-  background-color: #1a2e35;
+  background-color:rgb(250, 246, 246);
   width: 150px;
   padding: 0;  /* Remove padding to reduce space */
   margin: 0;  /* Remove extra space around the dropdown items */
   border-radius: 5px;
   
+  
 }
 
 /* Ensure no margin or padding between dropdown list items */
 nav ul li .dropdown-content li {
+  color: black; /* Set the font color to black */
   display: block;
   margin: 0;  /* Remove any margin between the list items */
   padding: 0; /* Remove any padding between the list items */
   line-height: 3.00;  /* Reduce line-height to decrease space between items */
+  
 }
+
 
 /* Ensure no padding on the anchor tags */
 nav ul li .dropdown-content li a {
+  color:black;
   padding: 5px 10px; /* Reduce the padding to make the links tighter */
   font-size: 15px;  /* Optional: Adjust font size */
   text-transform: none;  /* Keep text lowercase for better readability */
@@ -125,7 +132,7 @@ nav ul li .dropdown-content li a {
 
 nav ul li .dropdown-content li a:hover {
   background: #495057;
-  color: #f5ecec;
+  color:rgb(6, 6, 6);
   transition: .5s;
 }
 
@@ -169,7 +176,7 @@ nav ul li .dropdown-content li a:hover {
   a:hover,
   a.active {
     background: none;
-    color: #fafafa;
+    color:rgb(6, 6, 6);
   }
   #check:checked~ul {
     left: 0;
@@ -179,6 +186,7 @@ nav ul li .dropdown-content li a:hover {
     position: static;
     width: 100%;
     display: none;
+    color:black;
   }
 
   nav ul li:hover .dropdown-content {
@@ -190,7 +198,6 @@ nav ul li .dropdown-content li a:hover {
 /* Add styling for the cross icon */
 
 }
-
 
 /* Search Bar Styling */
 .search-bar-container {
@@ -310,9 +317,9 @@ nav ul li .dropdown-content li a:hover {
     
     <!-- Dropdown menu for 'கட்டுரைகள்' -->
     <li class="dropdown">
-      <a href="#">கட்டுரைகள்</a>
+      <a href="#" >கட்டுரைகள்</a>
       <ul class="dropdown-content">
-        <li><a href="kalvi.php">கல்வி</a></li>
+        <li><a href="kalvi.php" style:color;"black">கல்வி</a></li>
         <li><a href="ulaviyal.php">உளவியல்</a></li>
        
         <li><a href="samugam.php">சமூகம்</a></li>
