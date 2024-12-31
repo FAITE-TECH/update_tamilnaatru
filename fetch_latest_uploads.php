@@ -23,7 +23,7 @@
 include 'connect.php'; // Ensure this file contains your DB connection details
 
 // Query to fetch the latest 3 uploads
-$sql = "SELECT id, category, title, image_path, content FROM uploads ORDER BY upload_date DESC LIMIT 3";
+$sql = "SELECT id, category, title, image_path, content FROM uploads ORDER BY upload_date DESC LIMIT 5";
 $result = $conn->query($sql);
 
 // Check if any uploads exist

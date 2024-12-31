@@ -42,7 +42,7 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 nav {
-  background: #1a2e35;
+  background:#b90005;
   height: 80px;
   width: 100%;
 }

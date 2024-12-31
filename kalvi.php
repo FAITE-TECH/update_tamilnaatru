@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <title>TamilNaatru</title>
 
-  <link rel="stylesheet" href="css/bootstrap.css" />
+  
   <link rel="stylesheet" href="newstyle.css" />
   <link href="https://fonts.googleapis.com/css2?family=Pavanam&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -14,193 +14,6 @@
 
   <style>
     
-    
-    * {
-  padding: 0;
-  margin: 0;
-  text-decoration: none;
-  list-style: none;
-  box-sizing: border-box;
-}
-body {
-  font-family: "Montserrat", sans-serif;
-}
-nav {
-  background: #b90005;
-  height: 80px;
-  width: 100%;
-}
-
-label.logo {
-  color: white;
-  font-size: 25px;
-  line-height: 80px;
-  padding: 0 100px;
-  font-weight: bold;
-}
-
-label.logo img {
-  height: 50px;
-  margin-right: 10px;
-}
-
-nav ul {
-  float: right;
-  margin-right: 20px;
-  list-style-type: none;
-}
-
-nav ul li {
-  display: inline-block;
-  line-height: 80px;
-  margin: 0 5px;
-}
-
-nav ul li a {
-  color: white;
-  font-size: 17px;
-  padding: 7px 13px;
-  border-radius: 3px;
-  text-transform: uppercase;
-}
-
-a.active,
-a:hover {
-  background: #495057;
-  color:rgb(14, 14, 14);
-  transition: .5s;
-}
-
-.checkbtn {
-  font-size: 22px;
-  color: white;
-  float: right;
-  line-height: 80px;
-  margin-right: 30px;
-  cursor: pointer;
-  display: none;
-}
-
-#check {
-  display: none;
-}
-
-/* Dropdown Menu Styles */
-nav ul li.dropdown {
-  position: relative;
-}
-
-nav ul li.dropdown:hover .dropdown-content {
-  display: block;
-  
-}
-
-nav ul li .dropdown-content {
-  display: none;
-  position: absolute;
-  top: 50px;  /* Aligns the dropdown directly below the navbar */
-  left: 0;
-  background-color:rgb(250, 246, 246);
-  width: 150px;
-  padding: 0;  /* Remove padding to reduce space */
-  margin: 0;  /* Remove extra space around the dropdown items */
-  border-radius: 5px;
-  
-  
-}
-
-/* Ensure no margin or padding between dropdown list items */
-nav ul li .dropdown-content li {
-  color: black; /* Set the font color to black */
-  display: block;
-  margin: 0;  /* Remove any margin between the list items */
-  padding: 0; /* Remove any padding between the list items */
-  line-height: 3.00;  /* Reduce line-height to decrease space between items */
-  
-}
-
-
-/* Ensure no padding on the anchor tags */
-nav ul li .dropdown-content li a {
-  color:black;
-  padding: 5px 10px; /* Reduce the padding to make the links tighter */
-  font-size: 15px;  /* Optional: Adjust font size */
-  text-transform: none;  /* Keep text lowercase for better readability */
-}
-
-
-
-nav ul li .dropdown-content li a:hover {
-  background: #495057;
-  color:rgb(6, 6, 6);
-  transition: .5s;
-}
-
-@media (max-width: 1050px) {
-  label.logo {
-    padding-left: 20px;
-    font-size: 20px;
-  }
-  label.logo img {
-    height: 25px;
-  }
-  nav ul li a {
-    font-size: 15px;
-  }
-}
-/* Responsive media query code for small screen */
-@media (max-width: 890px) {
-  .checkbtn {
-    display: block;
-  }
- 
-  ul {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    background:  #1a2e35;
-    top: 80px;
-    left: -100%;
-    text-align: center;
-    transition: all .5s;
-  }
-  nav ul li {
-    display: block;
-    margin: 50px 0;
-    line-height: 0px;
-  }
-  nav ul li a {
-    font-size: 20px;
-    gap: 15px;
-  }
-  a:hover,
-  a.active {
-    background: none;
-    color:rgb(6, 6, 6);
-  }
-  #check:checked~ul {
-    left: 0;
-  }
-  /* Mobile dropdown menu */
-  nav ul li .dropdown-content {
-    position: static;
-    width: 100%;
-    display: none;
-    color:black;
-  }
-
-  nav ul li:hover .dropdown-content {
-    display: block;
-  }
-
-  /* Existing CSS remains as is */
-
-/* Add styling for the cross icon */
-
-}
-
-
-
 /* General container for each update box */
 .update-box {
     display: flex;
@@ -303,74 +116,10 @@ nav ul li .dropdown-content li a:hover {
 
     <div class="hero_area">
       <body>
-      <nav>
-  <!-- Checkbox for toggling menu -->
-  <input type="checkbox" id="check">
-  
-  <!-- Menu icon -->
-  <label for="check" class="checkbtn">
-    <i class="fas fa-bars"></i>
-  </label>
-  
-  <!-- Site logo -->
-  <label class="logo">
-    <img src="images/Tlogo.jpg" alt="Logo">
-    தமிழ் நாற்று
-  </label>
-  
-  <!-- Navigation links -->
-  <ul>
-    <li><a href="index.php">முகப்பு</a></li>
-    
-      <!-- Dropdown menu for 'கட்டுரைகள்' -->
-      <li class="dropdown">
-      <a href="#">கட்டுரைகள்</a>
-      <ul class="dropdown-content">
-        <li><a href="kalvi.php">கல்வி</a></li>
-        <li><a href="ulaviyal.php">உளவியல்</a></li>
-       
-        <li><a href="samugam.php">சமூகம்</a></li>
-        <li><a href="tholinotpam.php">தொழில்நுட்பம்</a></li>
-        <li><a href="arasiyal.php">அரசியல்</a></li>
-        <li><a href="arangiyal.php">அரங்கியல்</a></li>
-      </ul>
-    </li>
-    
-    <!-- Dropdown menu for 'இலக்கியம்' -->
-    <li class="dropdown">
-      <a href="#">இலக்கியம்</a>
-      <ul class="dropdown-content">
-        <li><a href="sirugadhai.php">சிறுகதை</a></li>
-        <li><a href="kavidhai.php">கவிதை</a></li>
-        <li><a href="cinema.php">சினிமா</a></li>
-      </ul>
-    </li>
-    
-    <!-- Dropdown menu for 'பொது அறிவு' -->
-    <li class="dropdown">
-      <a href="#">பொது அறிவு</a>
-      <ul class="dropdown-content">
-        <li><a href="ilangai.php">இலங்கை</a></li>
-        <li><a href="india.php">இந்தியா</a></li>
-        <li><a href="ulagam.php">உலகம்</a></li>
-        <li><a href="tholil.php">தொழில்நுட்பம்</a></li>
-      </ul>
-    </li>
-    <li><a href="login.html">உள்நுழைவு</a></li>
-  </ul>
-</nav>
-
-
-   
-         
-        </section>
-        
-        
-  
-      </div>
- 
-      
-      
+     
+      <?php
+      include('navigation.php');
+      ?>
         
       <div class="container" style="display: flex; justify-content: center; align-items: center; ">     
           <!-- Left Side -->
@@ -430,22 +179,26 @@ $conn->close();
             </ul>
         </div>
         <!-- Contact Us Section -->
-        <div style="flex: 1; min-width: 250px; margin-bottom: 15px;">
-            <h5>தொடர்புகளுக்கு</h5>
-            <p>Email: <a href="mailto:info@tamilnaatru.com" style="color: rgb(240, 244, 248);">info@tamilnaatru.com</a></p>
-            <p>Phone: +91 123 456 7890</p>
-            <div>
-                <a href="#" style="color: #fff; text-decoration: none; margin-right: 10px;">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" style="color: #fff; text-decoration: none; margin-right: 10px;">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#" style="color: #fff; text-decoration: none;">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
-        </div>
+       <!-- Contact Us Section --> 
+<div style="flex: 1; min-width: 350px; margin-bottom: 15px; line-height: 1.6;">
+    <h5 style="margin-bottom: 10px;">தொடர்புகளுக்கு</h5>
+    <p style="margin-bottom: 10px;">Email: 
+        <a href="mailto:info@tamilnaatru.com" style="color: rgb(240, 244, 248); text-decoration: none;">info@tamilnaatru.com</a>
+    </p>
+    <p style="margin-bottom: 15px;">Phone: +91 123 456 7890</p>
+    <div style="margin-top: 10px;">
+        <a href="#" style="color: #fff; text-decoration: none; margin-right: 10px;">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" style="color: #fff; text-decoration: none; margin-right: 10px;">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" style="color: #fff; text-decoration: none;">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+</div>
+
     </div>
     <p style="font-size: 14px; margin-top: 20px;">&copy; 2024 Faite. All Rights Reserved.</p>
 </footer>
