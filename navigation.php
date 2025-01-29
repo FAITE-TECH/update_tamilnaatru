@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>TamilNaatru</title>
-
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
-    
-    
-/* Global Styles */
+  /* Global Styles */
 * {
   padding: 0;
   margin: 0;
@@ -24,13 +10,6 @@
 }
 body {
   font-family: "Montserrat", sans-serif;
-}
-
-nav ul li .dropdown-content li a:focus,
-nav ul li .dropdown-content li a:active {
-  background-color: transparent; /* Remove the gray background */
-  outline: none; /* Remove the outline */
-  color: inherit; /* Maintain the text color */
 }
 
 nav {
@@ -45,15 +24,30 @@ nav {
 label.logo {
   color: white;
   font-size: 25px;
-  padding: 0 100px;
+  padding: 0 120px;
   font-weight: bold;
   display: flex;
+  flex-direction: column; /* Stack the slogan below the logo and name */
   align-items: center; /* Centers logo text vertically */
+}
+
+label.logo > .logo-name {
+  display: flex;
+  align-items: center; /* Ensure logo and name are aligned horizontally */
 }
 
 label.logo img {
   height: 50px;
-  margin-right: 10px;
+  margin-right: 10px; /* Space between logo and name */
+}
+
+h6 {
+  font-size: 10px; /* Smaller font size for the slogan */
+  color: white;
+  font-weight: normal;
+  text-transform: lowercase; /* Make the text lowercase */
+  margin: 3px 0 0 0; /* Ensure some space above the slogan */
+  text-align: center;
 }
 
 nav ul {
@@ -81,7 +75,6 @@ a:hover {
   color: rgb(252, 249, 249);
   transition: 0.5s;
   text-decoration: underline; /* Underline the link */
- 
 }
 
 .checkbtn {
@@ -140,6 +133,14 @@ nav ul li .dropdown-content li a:hover {
   color: #b90005; /* Optional: Change the text color on hover */
 }
 
+/* Add this to your existing CSS */
+/* Remove focus outline */
+.checkbtn:focus,
+nav ul li a:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 /* Media Query for Tablet Screens (Portrait Mode) */
 @media (max-width: 1024px) and (min-width: 768px) {
   nav {
@@ -157,7 +158,6 @@ nav ul li .dropdown-content li a:hover {
     justify-content: center; /* Center navigation items */
     width: 100%;
     text-align: center;
-    
   }
 
   nav ul li {
@@ -196,7 +196,6 @@ nav ul li .dropdown-content li a:hover {
 
   /* Adjust line height and padding for dropdown links */
   nav ul li .dropdown-content li a {
-    
     padding: 10px 15px;
     font-size: 16px;
     text-transform: none;
@@ -205,16 +204,15 @@ nav ul li .dropdown-content li a:hover {
   }
 
   /* Remove hover effects for dropdown links */
-.dropdown-content a {
+  .dropdown-content a {
     text-decoration: none; /* No underline */
     color: inherit; /* Inherit the color from the parent */
-}
+  }
 
-.dropdown-content a:hover {
+  .dropdown-content a:hover {
     text-decoration: none; /* No underline on hover */
     color: inherit; /* No color change on hover */
-}
-
+  }
 }
 
 /* Media Query for Medium Screens (e.g., iPad Air/Pro) */
@@ -253,8 +251,6 @@ nav ul li .dropdown-content li a:hover {
     position: relative;
   }
 
-  
-
   nav ul li .dropdown-content {
     display: none;
     position: absolute;
@@ -272,20 +268,17 @@ nav ul li .dropdown-content li a:hover {
     line-height: 1.5;
   }
 
- /* Remove hover effects for dropdown links */
-.dropdown-content a {
+  /* Remove hover effects for dropdown links */
+  .dropdown-content a {
     text-decoration: none; /* No underline */
     color: inherit; /* Inherit the color from the parent */
-}
+  }
 
-.dropdown-content a:hover {
+  .dropdown-content a:hover {
     text-decoration: none; /* No underline on hover */
     color: inherit; /* No color change on hover */
+  }
 }
-
-}
-
-
 
 /* Media Query for Small Screens (Under 768px) */
 @media (max-width: 768px) {
@@ -362,100 +355,20 @@ nav ul li .dropdown-content li a:hover {
     color: #f0f0f0;
     font-size: 16px;
     text-transform: none;
-    
-  }
-
- /* Remove hover effects for dropdown links */
-.dropdown-content a {
-    text-decoration: none; /* No underline */
-    color: inherit; /* Inherit the color from the parent */
-}
-
-.dropdown-content a:hover {
-    text-decoration: none; /* No underline on hover */
-    color: inherit; /* No color change on hover */
-}
-
-}
-
-/* Media Query for Medium Screens (e.g., iPad Air/Pro, Surface Pro, Zenbook Fold) */
-@media (max-width: 1024px) and (min-width: 800px) {
-  nav {
-    height: 80px;  /* Set a consistent height for the navbar */
-    padding: 0 15px;  /* Adjust padding to create some breathing space */
-    width: 100%;  /* Ensure the navbar spans the full width */
-    box-sizing: border-box;  /* Include padding in the total width calculation */
-    display: flex;
-    justify-content: space-between; /* Keep logo on the left and menu items on the right */
-    align-items: center; /* Vertically center the content */
-  }
-
-  label.logo {
-    font-size: 24px;
-    padding: 0 15px; /* Adjust logo padding */
-    flex-grow: 1;  /* Allow logo to take space if needed */
-  }
-
-  nav ul {
-    display: flex; /* Use flexbox for the menu items */
-    justify-content: flex-end;  /* Align menu items to the right */
-    margin: 0;
-    padding-left: 0; /* Remove left padding */
-  }
-
-  nav ul li {
-    margin: 0 15px; /* Evenly space the menu items */
-    display: inline-block;
-  }
-
-  nav ul li a {
-    font-size: 18px;  /* Adjust font size for readability */
-    padding: 10px 20px; /* Add padding for spacing */
-    line-height: 60px;  /* Vertically center the link */
-  }
-
-  .checkbtn {
-    display: none;  /* Hide hamburger menu on medium screens */
-  }
-
-  /* Dropdown Menu */
-  nav ul li.dropdown {
-    position: relative;
-  }
-
-  nav ul li.dropdown:hover .dropdown-content {
-    display: block; /* Display the dropdown menu on hover */
-  }
-
-  nav ul li .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 80px;  /* Position dropdown below navbar */
-    left: 0;
-    background-color: rgb(250, 246, 246);
-    width: 170px;  /* Adjust width for a better fit */
-    border-radius: 5px;
-  }
-
-  nav ul li .dropdown-content li a {
-    color: black;
-    padding: 10px 15px;
-    font-size: 16px;
-    line-height: 1.5;
   }
 
   /* Remove hover effects for dropdown links */
-.dropdown-content a {
+  .dropdown-content a {
     text-decoration: none; /* No underline */
     color: inherit; /* Inherit the color from the parent */
-}
+  }
 
-.dropdown-content a:hover {
+  .dropdown-content a:hover {
     text-decoration: none; /* No underline on hover */
     color: inherit; /* No color change on hover */
+  }
 }
 
-}
 
 
 
@@ -482,9 +395,12 @@ nav ul li .dropdown-content li a:hover {
   
   <!-- Site logo -->
   <label class="logo">
-    <img src="images/Tlogo.jpg" alt="Logo">
-    தமிழ் நாற்று
-  </label>
+      <div class="logo-name">
+        <img src="images/Tlogo.jpg" alt="Logo">
+        <span>தமிழ் நாற்று</span>
+      </div>
+      <h6>"பிறப்பொக்கும் எல்லா உயிர்க்கும்"</h6> <!-- Slogan is placed below -->
+    </label>
   
   <!-- Navigation links -->
   <ul>
@@ -496,11 +412,11 @@ nav ul li .dropdown-content li a:hover {
       <ul class="dropdown-content">
         <li><a href="kalvi.php">கல்வி</a></li>
         <li><a href="ulaviyal.php">உளவியல்</a></li>
-       
-        <li><a href="samugam.php">சமூகம்</a></li>
+       <li><a href="samugam.php">சமூகம்</a></li>
         <li><a href="tholinotpam.php">தொழில்நுட்பம்</a></li>
         <li><a href="arasiyal.php">அரசியல்</a></li>
         <li><a href="arangiyal.php">அரங்கியல்</a></li>
+        <li><a href="alumigal.php">ஆளுமைகள்</a></li>
       </ul>
     </li>
     
@@ -511,6 +427,8 @@ nav ul li .dropdown-content li a:hover {
         <li><a href="sirugadhai.php">சிறுகதை</a></li>
         <li><a href="kavidhai.php">கவிதை</a></li>
         <li><a href="cinema.php">சினிமா</a></li>
+        <li><a href="varalaru.php">வரலாறு</a></li>
+        <li><a href="padipu.php">படைப்புகள்</a></li>
       </ul>
     </li>
     
@@ -528,6 +446,8 @@ nav ul li .dropdown-content li a:hover {
   </ul>
 </nav>
 <script>
+
+
 
 document.addEventListener("DOMContentLoaded", function() {
   const checkbtn = document.querySelector(".checkbtn i");

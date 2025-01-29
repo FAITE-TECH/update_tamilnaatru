@@ -11,10 +11,33 @@ body {
 .container {
     display: flex; /* Align left-side and right-side horizontally */
     flex-direction: row; /* Default row direction for side-by-side layout */
-    gap: 120px; /* Space between the sections */
+    gap: 60px; /* Space between the sections */
     margin: 40px auto;
     max-width: 1200px;
 }
+/* Left Side1 Container */
+.first_left{
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between each update */
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Center the content horizontally */
+}
+
+/* Upper Container */
+.upper-container,
+.lower-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between each update */
+    
+}
+
+
+
+
 
 /* Left Side Container */
 .left-side {
@@ -55,7 +78,7 @@ body {
 }
 
 /* Image in Update Box */
-.update-photo {
+.update-photo{
     width: 100px;
     height: 100px;
     object-fit: cover;
@@ -122,7 +145,7 @@ body {
 
 /* Button Styling */
 .left-side button {
-    background-color:#ff4f5a; /* Beautiful purple button */
+    background-color:#ff4f5a; 
     color: #fff;
     font-size: 12px; /* Reduced font size */
     padding: 5px 10px; /* Reduced padding */
@@ -148,7 +171,6 @@ body {
 }
 
 
- /* Small Page Design */
 .small-page {
     background-color: #32d0c5;
     margin: 20px auto;
@@ -162,7 +184,9 @@ body {
     flex-wrap: wrap;
     gap: 20px;
     text-align: left;
+   
 }
+
 
 .content-container {
     display: flex;
@@ -170,6 +194,7 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    
 }
 
 .text-section {
@@ -178,10 +203,11 @@ body {
 }
 
 .text-section h2 {
-    font-size: 26px;
+    font-size: 22px;
     font-family: 'Georgia', serif;
     color: #222222;
     margin-bottom: 20px;
+    font-weight: normal; /* Remove boldness */
 }
 
 .text-section p {
@@ -202,23 +228,6 @@ body {
 }
 
 
-.image-section {
-    flex: 1 1 30%;
-    text-align: center;
-}
-
-.image-section .valluvar-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    background-color: #f9f9f9;
-    transition: transform 0.3s ease;
-}
-
-.image-section .valluvar-img:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-}
 
 
 
@@ -277,9 +286,7 @@ body {
         font-size: 16px;
     }
 
-    .image-section .valluvar-img {
-        width: 70%;
-    }
+    
 }
 
 /* Responsive Design for Extra Small Screens */

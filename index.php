@@ -16,13 +16,12 @@
 
 /* Search Bar Styling */
 .search-bar-container {
-    margin-top: 0px;
     display: flex;
-    justify-content: left;
     gap: 10px;
-    width: 100%; /* Ensures it aligns with the content */
+    flex: 1 1 40%; /* Adjust width to fit alongside the text */
+    justify-content: flex-start; /* Align search bar to the start */
     flex-wrap: wrap;
-  }
+}
 
 .search-input {
     padding: 10px;
@@ -84,23 +83,112 @@
     color: #000;
 }
 
-.social-share {
-    margin-top: 20px;
+/*new container*/
+/* Image Styling */
+.prof-photo {
+    width: 120px; /* Fixed width for uniformity */
+    height: 120px; /* Fixed height to maintain square shape */
+    object-fit: cover; /* Ensure the image scales properly */
+    border-radius: 8px; /* Rounded corners for the image */
+    flex-shrink: 0; /* Prevent the image from shrinking */
+}
+
+
+/* Header (Title) styling */
+.updates-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 10px;
+    color: #333;
+}
+.upper-container p{
+    font-size: 14px; 
+}
+
+
+/* Inner Div Styling */
+.upper-container > div {
     display: flex;
-    gap: 15px;
+    gap: 20px; /* Space between the image and the content */
+    align-items: flex-start; /* Align items at the start */
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Subtle shadow for elegance */
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.social-share a {
-    text-decoration: none;
-    font-size: 24px;
-    color: #1a2e35; /* Or any color of your choice */
-    transition: transform 0.2s ease-in-out;
+/* Content (h2, p, h5, button) Styling Inside Div */
+.upper-container > div > img + * { /* Ensures everything after the image is grouped */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    gap: 10px; /* Space between h2, p, h5, and button */
+}
+/* Image Styling */
+.prof-photo {
+    width: 120px; /* Fixed width for uniformity */
+    height: 120px; /* Fixed height to maintain square shape */
+    object-fit: cover; /* Ensure the image scales properly */
+    border-radius: 8px; /* Rounded corners for the image */
+    flex-shrink: 0; /* Prevent the image from shrinking */
 }
 
-.social-share a:hover {
-    color: #5f3434; /* Highlight color on hover */
-    transform: scale(1.2);
+
+
+
+.lower-container p{
+    font-size: 14px; 
 }
+
+
+/* Inner Div Styling */
+.lower-container > div {
+    display: flex;
+    gap: 20px; /* Space between the image and the content */
+    align-items: flex-start; /* Align items at the start */
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Subtle shadow for elegance */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Content (h2, p, h5, button) Styling Inside Div */
+.lower-container > div > img + * { /* Ensures everything after the image is grouped */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    gap: 10px; /* Space between h2, p, h5, and button */
+}
+
+
+/* Inner Div Styling */
+.lower-container > div {
+    display: flex;
+    gap: 20px; /* Space between the image and the content */
+    align-items: flex-start; /* Align items at the start */
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Subtle shadow for elegance */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cta-btn {
+        display: inline-block;
+        padding: 12px 25px;
+        margin-top: 0px;
+        font-size: 14px;
+        color: #ffffff;
+        background-color: #ff4f5a;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        width: 175px;
+        height: 35px;
+    }
 
 
 
@@ -116,82 +204,138 @@
 include('navigation.php');
 ?>
 
-        <section class="small-page">
-          <div class="content-container">
-            <div class="text-section">
-              <h2>"தமிழ் நாற்று வலைத்தள பக்கத்திற்கு வரவேற்கிறோம்"</h2>
-              
-              <blockquote class="thirukkural">
-                "அகர முதல எழுத்தெல்லாம் ஆதி<br>
-                பகவன் முதற்றே உலகு"
-              </blockquote>
-            </div>
-            <div class="image-section">
-              <img src="images/valluvar-removebg-preview.png" alt="Thiruvalluvar" class="valluvar-img">
-            </div>
-            <div class="search-bar-container">
-    <form method="GET" action="search.php">
+<section class="small-page">
+  <div class="content-container">
+    <!-- Text Section -->
+    <div class="text-section">
+      <h2>"தமிழ் நாற்று வலைத்தள பக்கத்திற்கு வரவேற்கிறோம்"</h2>
+      <!--blockquote class="thirukkural">
+      "பிறப்பொக்கும் எல்லா உயிர்க்கும்"
+      </blockquote-->
+    </div>
+
+    <!-- Search Bar Container -->
+    <div class="search-bar-container">
+      <form method="GET" action="search.php">
         <input type="text" name="query" placeholder="தேடல்..." class="search-input" required>
         <input type="submit" value="தேடு" class="search-button">
         <div id="searchResults" class="search-results-container"></div>
-    </form>
-</div>
+      </form>
+    </div>
+  </div>
+</section>
 
-           
-
-          </div>
-         
-        </section>
         
         
   
-      </div>
-  
- 
-
-      <div class="container">         
-          <!-- Left Side -->
-          <div class="left-side" id="leftContent">
-              <h2 style="text-align: center; font-weight: bold;">சமீபத்திய புதிப்பிப்புகள்</h2>
-
-             
-   </div>
       
+  
  
 
-    
-        <!-- Right Side -->
-<!--Right Side: Buttons-->
-<div class="right-side" id="updateList">
+<div class="container">    
+    <!-- Left Side1 -->
+    <div class="first_left" id="first_leftContent">
+        <div class="upper-container">
+            <h3> திருக்குறள் புதிப்பிப்புகள்</h3>
+            <?php
+// Include the database connection
+include 'connect.php';
 
-
-        <?php
-require_once('connect.php');
-
-// Fetch categories from the database
-$query = "SELECT display_name, category_name, image_path FROM categories ORDER BY button_position ASC";
-$result = $conn->query($query);
+// Query to fetch the latest 5 uploads from the 'ஆளுமை' category
+// Query to fetch content
+$sql = "SELECT id, category, title, image_path, content FROM uploads WHERE category = 'திருக்குறள்' ORDER BY upload_date DESC LIMIT 3";
+$result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo '
-        <div class="update-box" onclick="fetchArticles(\'' . $row['category_name'] . '\')" style="border: 2px solid #121111;">
-            <img src="' . $row['image_path'] . '" alt="' . $row['display_name'] . '" class="update-photo">
-            <div class="update-title">' . $row['display_name'] . '</div>
-        </div>';
+        echo '<div class="update-box" data-id="' . htmlspecialchars($row['id']) . '">
+                <img src="' . htmlspecialchars($row['image_path']) . '" alt="' . htmlspecialchars($row['title']) . '" class="prof-photo">
+                <div class="content">
+                     <h2 class="updates-header">' . htmlspecialchars($row['title']) . '</h2>
+                     <p>' . mb_substr(strip_tags($row['content']), 0, 90, 'UTF-8') . '...</p>
+                     <a href="view.php?id=' . htmlspecialchars($row['id']) . '" class="cta-btn">மேலும் வாசிக்க</a>
+                </div>
+              </div>';
     }
 } else {
-    echo '<p>No categories available.</p>';
+    echo '<p>சமீபத்திய புதுப்பிப்புகள் இல்லை.</p>';
 }
+
+
+
 ?>
+             
+        </div>
+        <div class="lower-container">
+            <h3>ஆளுமை புதிப்பிப்புகள்</h3>
 
-  
-</div>
-    </div-->
+            <?php
+// Include the database connection
+include 'connect.php';
+
+// Query to fetch the latest 5 uploads from the 'ஆளுமை' category
+$sql = "SELECT id, category, title, image_path, content 
+        FROM uploads 
+        WHERE category = 'ஆளுமை' 
+        ORDER BY upload_date DESC 
+        LIMIT 3";
+
+// Execute the query
+$result = $conn->query($sql);
+
+// Check if any uploads exist
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        // Display each upload dynamically
+        echo '<div class="update-box" data-id="' . htmlspecialchars($row['id']) . '">
+                <img src="' . htmlspecialchars($row['image_path']) . '" alt="' . htmlspecialchars($row['title']) . '" class="prof-photo">
+                <div class="content">
+                     <h2 class="updates-header">' . htmlspecialchars($row['title']) . '</h2>
+                    <p>' . mb_substr(strip_tags($row['content']), 0, 90, 'UTF-8') . '...</p>
+                    <a href="view.php?id=' . htmlspecialchars($row['id']) . '" class="cta-btn">மேலும் வாசிக்க</a>
+                </div>
+              </div>';
+    }
+} else {
+    echo '<p>சமீபத்திய புதுப்பிப்புகள் இல்லை.</p>';
+}
 
 
-
+?>
+            
+          
+        </div>
     </div>
+
+    <!-- Left Side -->
+    <div class="left-side" id="leftContent">
+        <h2 style="text-align: center; font-weight: bold;">சமீபத்திய புதிப்பிப்புகள்</h2>
+    </div>
+    
+    <!-- Right Side -->
+    <div class="right-side" id="updateList">
+        <?php
+        require_once('connect.php');
+
+        // Fetch categories from the database
+        $query = "SELECT display_name, category_name, image_path FROM categories ORDER BY button_position ASC";
+        $result = $conn->query($query);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo '
+                <div class="update-box" onclick="fetchArticles(\'' . $row['category_name'] . '\')" style="border: 2px solid #121111;">
+                    <img src="' . $row['image_path'] . '" alt="' . $row['display_name'] . '" class="update-photo">
+                    <div class="update-title">' . $row['display_name'] . '</div>
+                </div>';
+            }
+        } else {
+            echo '<p>No categories available.</p>';
+        }
+        ?>
+    </div>
+</div>
+
     
 
 
@@ -247,20 +391,7 @@ if ($result->num_rows > 0) {
 
 <script>
 
-document.addEventListener("DOMContentLoaded", function() {
-  const checkbtn = document.querySelector(".checkbtn i");
-  const checkbox = document.querySelector("#check");
 
-  checkbox.addEventListener("change", function() {
-    if (checkbox.checked) {
-      checkbtn.classList.remove("fa-bars");
-      checkbtn.classList.add("fa-times");
-    } else {
-      checkbtn.classList.remove("fa-times");
-      checkbtn.classList.add("fa-bars");
-    }
-  });
-});
 
 
 
@@ -289,6 +420,10 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Error:', error);
             document.querySelector('.left-side').innerHTML += '<p>Error loading updates.</p>';
         });
+
+
+ 
+ 
 
 
 //searching
@@ -332,47 +467,39 @@ function fetchArticles(category) {
         },
         body: "category=" + encodeURIComponent(category),
     })
-        .then(response => response.json())
-        .then(data => {
-            console.log("Articles received:", data); // Debugging output
-            const leftContent = document.getElementById("leftContent");
-            if (data.length > 0) {
-                leftContent.innerHTML = data
-                    .map(article => `
-                        <div style="background-color: transparent; padding: 10px;">
-                            <img src="${article.image_path}" alt="${article.title}" class="update-photo1">
+    .then(response => response.json())
+    .then(data => {
+        console.log("Articles received:", data); // Debugging output
+        const leftContent = document.getElementById("leftContent");
+
+        if (data.length > 0) {
+            leftContent.innerHTML = data
+                .map(article => {
+                    // Strip HTML tags and truncate the content to 150 characters
+                    const truncatedContent = article.content.replace(/<[^>]+>/g, '').substring(0, 120);
+                    
+                    return `
+                        <div class="update-box" data-id="${article.id}">
+                            <img src="${article.image_path}" alt="${article.title}" class="prof-photo">
                             <div class="content">
                                 <h2 class="updates-header">${article.title}</h2>
-                                <p>${article.content.substring(0, 150)}...</p>
-                                <a href="view.php?id=${article.id}" style="text-decoration: none; background-color: transparent; display: inline-block;">
-                                    <button>மேலும் வாசிக்க</button>
-                                </a>
+                                <p>${truncatedContent}...</p>
+                                <a href="view.php?id=${article.id}" class="cta-btn">மேலும் வாசிக்க</a>
                             </div>
                         </div>
-                    `)
-                    .join("");
-            } else {
-                leftContent.innerHTML = "<p>No articles found for this category.</p>";
-            }
-        })
-        .catch(error => console.error("Error fetching articles:", error));
+                    `;
+                })
+                .join("");
+        } else {
+            leftContent.innerHTML = "<p>No articles found for this category.</p>";
+        }
+    })
+    .catch(error => console.error("Error fetching articles:", error));
 }
 
 
 
-
-
-
-
-
-
-
 </script>
-
-
-
-  
-
 </body>
 </body>
 

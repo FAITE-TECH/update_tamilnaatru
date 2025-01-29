@@ -18,7 +18,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['like'])) {
         exit();
     }
 }
+
+// Increment view count
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $id = intval($_GET['id']);
+    $stmt = $conn->prepare("UPDATE uploads SET views = views + 1 WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $stmt->close();
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,8 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['like'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Content</title>
     <style>
+        /* Styles for the content and buttons */
         .full-content {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 50px auto;
             padding: 20px;
             background: #f9f9f9;
@@ -51,11 +62,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['like'])) {
             text-align: left;
         }
 
-        .full-content h1,
-        .full-content h2 {
-            margin-bottom: 10px;
-        }
-
         .like-button {
             margin-top: 5px;
             text-align: left;
@@ -63,45 +69,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['like'])) {
             align-items: center;
         }
 
-        .like-button .thumbs-up {
-    display: inline-block;
-    padding: 10px;
-    background: transparent;
-    font-size: 24px;
-    color: black;
-    border: none; /* Remove any border */
-    cursor: pointer;
-    transition: color 0.3s ease; /* Smooth color transition */
-    margin-right: 10px;
-}
+        .thumbs-up {
+            display: inline-block;
+            padding: 10px;
+            background: transparent;
+            font-size: 24px;
+            color: black;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            margin-right: 10px;
+        }
 
-.like-button .thumbs-up.liked {
-    color: #007bff; /* Change only the icon color when liked */
-}
+        .thumbs-up.liked {
+            color: #007bff;
+        }
 
         .like-count {
             font-size: 18px;
             color: #333;
         }
 
-        .social-share {
-            margin-top: 20px;
-          
+        .view-count {
+            font-size: 18px;
+            color: #333;
+            margin-top: 10px;
         }
 
-        .social-share p {
-    margin: 0 0 15px 0; /* Adds 15px space below the <p> element */
-    padding: 0;
-    font-size: 16px;
-    color: #555;
-}
+        .social-share {
+            margin-top: 20px;
+        }
 
         .social-share a {
             margin: 0 10px;
             font-size: 24px;
             color: #333;
             transition: color 0.3s ease;
-            text-decoration: none; /* Remove any underlines */
+            text-decoration: none;
         }
 
         .social-share a:hover {
@@ -113,10 +117,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['like'])) {
 <body>
 <div class="full-content">
 <?php
-// Fetch article details and render the page content
+// Fetch article or PDF details
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = intval($_GET['id']);
-    $stmt = $conn->prepare("SELECT title, image_path, image2_path, content, likes FROM uploads WHERE id = ?");
+    $stmt = $conn->prepare("SELECT title, image_path, image2_path, content, file_path, likes, views FROM uploads WHERE id = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -124,13 +128,23 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         echo '<h1>' . htmlspecialchars($row['title']) . '</h1>';
-        if (!empty($row['image_path'])) {
-            echo '<img src="' . htmlspecialchars($row['image_path']) . '" alt="' . htmlspecialchars($row['title']) . '">';
+        
+        // Display text content or embedded PDF
+        if (!empty($row['content'])) {
+            if (!empty($row['image_path'])) {
+                echo '<img src="' . htmlspecialchars($row['image_path']) . '" alt="' . htmlspecialchars($row['title']) . '">';
+            }
+            echo '<div>' . nl2br(htmlspecialchars_decode($row['content'], ENT_QUOTES)) . '</div>';
+            if (!empty($row['image2_path'])) {
+                echo '<img src="' . htmlspecialchars($row['image2_path']) . '" alt="Additional Image">';
+            }
+        } elseif (!empty($row['file_path']) && file_exists($row['file_path'])) {
+            echo '<embed src="' . htmlspecialchars($row['file_path']) . '" type="application/pdf" width="100%" height="600px">';
+        } else {
+            echo '<p>Content not found.</p>';
         }
-        echo '<div>' . nl2br(htmlspecialchars_decode($row['content'], ENT_QUOTES)) . '</div>';
-        if (!empty($row['image2_path'])) {
-            echo '<img src="' . htmlspecialchars($row['image2_path']) . '" alt="Additional Image">';
-        }
+
+        /*Display like button, view count and social sharing options
         echo '
         <div class="like-button">
             <form method="POST" id="likeForm">
@@ -139,7 +153,11 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 </button>
             </form>
             <div class="like-count">Likes: <span id="likeCount">' . intval($row['likes']) . '</span></div>
-        </div>';
+        </div>';*/
+
+        // Display the view count
+        echo '<div class="view-count">Count: ' . intval($row['views']) . '</div>';
+
         echo '
         <div class="social-share">
             <p>Share this article:</p>
@@ -148,9 +166,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             </a>
             <a href="https://www.facebook.com/sharer/sharer.php?u=' . urlencode('http://localhost/TamillNattru/view.php?id=' . $id) . '" target="_blank">
                 <i class="fab fa-facebook"></i>
-            </a>
-            <a href="https://www.instagram.com/sharer/sharer.php?u=' . urlencode('http://localhost/TamillNattru/view.php?id=' . $id) . '" target="_blank">
-                <i class="fab fa-instagram"></i>
             </a>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=' . urlencode('http://localhost/TamillNattru/view.php?id=' . $id) . '" target="_blank">
                 <i class="fab fa-linkedin"></i>
@@ -163,21 +178,20 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 } else {
     echo '<p>Invalid request. No ID provided.</p>';
 }
+
 $conn->close();
 ?>
 </div>
-<script>
+<!--script>
     const likeBtn = document.getElementById('likeBtn');
     const likeForm = document.getElementById('likeForm');
     const likeCount = document.getElementById('likeCount');
 
     likeBtn.addEventListener('click', () => {
         if (!likeBtn.classList.contains('liked')) {
-            // Add liked state
             likeBtn.classList.add('liked');
             likeCount.textContent = parseInt(likeCount.textContent) + 1;
 
-            // Submit the form programmatically
             const formData = new FormData(likeForm);
             formData.append('like', true);
 
@@ -193,7 +207,7 @@ $conn->close();
             });
         }
     });
-</script>
+</script-->
 </body>
 </html>
 <?php ob_end_flush(); ?>

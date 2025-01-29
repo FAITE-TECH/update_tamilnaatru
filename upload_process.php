@@ -2,6 +2,8 @@
 // Include database connection
 include 'connect.php';
 
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Sanitize the received data
     $category = mysqli_real_escape_string($conn, $_POST['category']);
@@ -30,7 +32,7 @@ function cleanContent($content) {
     // Log the cleaned content for debugging (you can remove this after confirming the issue)
     error_log("Cleaned Content: " . $content);
 
-    $targetDir = "uploads/";
+   $targetDir = "uploads/";
     $image1Name = basename($_FILES['image1']['name']);
     $image1Path = $targetDir . $image1Name;
     $fileType1 = pathinfo($image1Path, PATHINFO_EXTENSION);

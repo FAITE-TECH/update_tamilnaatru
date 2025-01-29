@@ -1,4 +1,6 @@
 <?php
+
+
 $servername = "localhost";
 $username = "root";  // Default user for XAMPP MySQL
 $password = "";      // Leave blank if there's no password for root

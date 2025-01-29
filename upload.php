@@ -215,6 +215,7 @@ nav ul li .dropdown-content li a:hover {
     
     
       </style>
+
 <script>
   tinymce.init({
     selector: '#editor',
@@ -222,13 +223,48 @@ nav ul li .dropdown-content li a:hover {
     plugins: 'advlist autolink link image lists charmap preview code',
     toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | preview code',
     forced_root_block: 'p',  // Ensures paragraphs are wrapped in <p> tags
-    font_formats: 'Poppins=“Poppins”, sans-serif; Latha="Latha", sans-serif; TamilMN="Tamil MN", sans-serif; Bamini="Bamini", sans-serif;', // Add Tamil font to the list
+    font_formats: 'Poppins="Poppins", sans-serif; Latha="Latha", sans-serif; TamilMN="Tamil MN", sans-serif; Bamini="Bamini", sans-serif;', // Add Tamil font to the list
     content_style: 'body { font-family: "Poppins", sans-serif; }', // Default font for body
     content_css: [
       'https://fonts.googleapis.com/css?family=Poppins|Latha|TamilMN|Bamini', // Add Tamil fonts to Google Fonts
-    ]
-});
+    ],
+    images_upload_url: 'image_upload.php', // Backend script for handling image uploads
+    automatic_uploads: true,
+    file_picker_types: 'image',
+    image_title: true,
+    file_picker_callback: function(callback, value, meta) {
+      if (meta.filetype === 'image') {
+        const input = document.createElement('input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('accept', 'image/*');
+        input.onchange = function() {
+          const file = this.files[0];
+          const formData = new FormData();
+          formData.append('file', file);
+
+          // Perform the AJAX request
+          fetch('image_upload.php', {
+            method: 'POST',
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.location) {
+                callback(data.location);
+              } else {
+                alert('Image upload failed!');
+              }
+            })
+            .catch(() => {
+              alert('Image upload failed!');
+            });
+        };
+        input.click();
+      }
+    }
+  });
 </script>
+
 
 
     </head>
@@ -316,6 +352,7 @@ nav ul li .dropdown-content li a:hover {
             <option value="சமூகம்">சமூகம்</option>
             <option value="தொழில்நுட்பம்">தொழில்நுட்பம்</option>
             <option value="அரங்கியல்">அரங்கியல்</option>
+            <option value="ஆளுமை">ஆளுமைகள்</option>
         </optgroup>
 
         <!-- Dropdown group for 'இலக்கியம்' with subcategories -->
@@ -323,6 +360,8 @@ nav ul li .dropdown-content li a:hover {
             <option value="சிறுகதை">சிறுகதை</option>
             <option value="கவிதை">கவிதை</option>
             <option value="சினிமா">சினிமா</option>
+            <option value="பழமை">வரலாறு</option>
+            <option value="படைப்பு">படைப்புகள்</option>
         </optgroup>
 
         <!-- Dropdown group for 'பொது அறிவு' with subcategories -->
@@ -378,9 +417,16 @@ nav ul li .dropdown-content li a:hover {
       <div class="form-group">
         <button type="submit" class="btn-1">ஆக்கத்தினை சமர்ப்பிக்க</button>
       </div>
+
+      <div class="form-group">
+        <!-- New Button Redirecting to form.php -->
+        <button type="button" class="btn-1" onclick="window.location.href='form.php';">கோப்பினை சமர்ப்பிக்க</button>
+      </div>
     </form>
   </div>
 </section>
+
+
 
   
   <!--footer section-->
@@ -455,6 +501,7 @@ function cleanContent(content) {
 
     return content;
 }
+
 
 
 </script>

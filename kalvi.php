@@ -142,7 +142,7 @@ if ($result->num_rows > 0) {
                 <img src="' . htmlspecialchars($row['image_path']) . '" alt="' . htmlspecialchars($row['title']) . '" class="update-photo1">
                 <div class="content">
                     <h2 class="updates-header">' . htmlspecialchars($row['title']) . '</h2>
-                    <p>' . htmlspecialchars(substr(strip_tags($row['content']), 0, 150)) . '...</p>
+                    <p>' . htmlspecialchars(mb_substr(strip_tags($row['content']), 0, 80, 'UTF-8')) . '...</p>
                     <a href="view.php?id=' . htmlspecialchars($row['id']) . '" class="cta-btn">மேலும் வாசிக்க</a>
                 </div>
               </div>';
