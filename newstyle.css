@@ -11,7 +11,7 @@ body {
 .container {
     display: flex; /* Align left-side and right-side horizontally */
     flex-direction: row; /* Default row direction for side-by-side layout */
-    gap: 60px; /* Space between the sections */
+    gap: 40px; /* Space between the sections */
     margin: 40px auto;
     max-width: 1200px;
 }
