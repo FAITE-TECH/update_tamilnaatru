@@ -9,17 +9,25 @@
   <link rel="stylesheet" href="newstyle.css" />
   <link href="https://fonts.googleapis.com/css2?family=Pavanam&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BSYT314EWJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-BSYT314EWJ');
+</script>
 
   <style>
     
 
-/* Search Bar Styling */
+/* Search Bar Styling 
 .search-bar-container {
     display: flex;
     gap: 10px;
     flex: 1 1 40%; /* Adjust width to fit alongside the text */
-    justify-content: flex-start; /* Align search bar to the start */
+    justify-content: flex-start; /* Align search bar to the start 
     flex-wrap: wrap;
 }
 
@@ -65,7 +73,7 @@
     overflow-y: auto;
     display: none; /* Hidden by default */
     position: absolute; /* Position it below the search bar */
-    width: 100%; /* Match the width of the search bar */
+    width: 100%; /* Match the width of the search bar 
     z-index: 1000;
 }
 
@@ -81,7 +89,7 @@
 .search-result-item:hover {
     background-color: #f0f0f0;
     color: #000;
-}
+}*/
 
 /*new container*/
 /* Image Styling */
@@ -204,17 +212,17 @@
 include('navigation.php');
 ?>
 
-<section class="small-page">
+<!--section class="small-page">
   <div class="content-container">
-    <!-- Text Section -->
+    <Text Section >
     <div class="text-section">
       <h2>"தமிழ் நாற்று வலைத்தள பக்கத்திற்கு வரவேற்கிறோம்"</h2>
-      <!--blockquote class="thirukkural">
+      <blockquote class="thirukkural">
       "பிறப்பொக்கும் எல்லா உயிர்க்கும்"
-      </blockquote-->
-    </div>
+      </blockquote>
+    </div-->
 
-    <!-- Search Bar Container -->
+    <!-- Search Bar Container ->
     <div class="search-bar-container">
       <form method="GET" action="search.php">
         <input type="text" name="query" placeholder="தேடல்..." class="search-input" required>
@@ -223,7 +231,7 @@ include('navigation.php');
       </form>
     </div>
   </div>
-</section>
+</section-->
 
         
         
@@ -235,39 +243,9 @@ include('navigation.php');
 <div class="container">    
     <!-- Left Side1 -->
     <div class="first_left" id="first_leftContent">
-        <div class="upper-container">
-            <h3> திருக்குறள் புதிப்பிப்புகள்</h3>
-            <?php
-// Include the database connection
-include 'connect.php';
 
-// Query to fetch the latest 5 uploads from the 'ஆளுமை' category
-// Query to fetch content
-$sql = "SELECT id, category, title, image_path, content FROM uploads WHERE category = 'திருக்குறள்' ORDER BY upload_date DESC LIMIT 3";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        echo '<div class="update-box" data-id="' . htmlspecialchars($row['id']) . '">
-                <img src="' . htmlspecialchars($row['image_path']) . '" alt="' . htmlspecialchars($row['title']) . '" class="prof-photo">
-                <div class="content">
-                     <h2 class="updates-header">' . htmlspecialchars($row['title']) . '</h2>
-                     <p>' . mb_substr(strip_tags($row['content']), 0, 90, 'UTF-8') . '...</p>
-                     <a href="view.php?id=' . htmlspecialchars($row['id']) . '" class="cta-btn">மேலும் வாசிக்க</a>
-                </div>
-              </div>';
-    }
-} else {
-    echo '<p>சமீபத்திய புதுப்பிப்புகள் இல்லை.</p>';
-}
-
-
-
-?>
-             
-        </div>
-        <div class="lower-container">
-            <h3>ஆளுமை புதிப்பிப்புகள்</h3>
+    <div class="lower-container">
+            <h3 style="text-align: center;">ஆளுமை </h3>
 
             <?php
 // Include the database connection
@@ -305,16 +283,48 @@ if ($result->num_rows > 0) {
             
           
         </div>
+        <div class="upper-container">
+        <h3 style="text-align: center;">திருக்குறள் </h3>
+            <?php
+// Include the database connection
+include 'connect.php';
+
+// Query to fetch the latest 5 uploads from the 'ஆளுமை' category
+// Query to fetch content
+$sql = "SELECT id, category, title, image_path, content FROM uploads WHERE category = 'திருக்குறள்' ORDER BY upload_date DESC LIMIT 1";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo '<div class="update-box" data-id="' . htmlspecialchars($row['id']) . '">
+                <img src="' . htmlspecialchars($row['image_path']) . '" alt="' . htmlspecialchars($row['title']) . '" class="prof-photo">
+                <div class="content">
+                     <h2 class="updates-header">' . htmlspecialchars($row['title']) . '</h2>
+                     <p>' . mb_substr(strip_tags($row['content']), 0, 90, 'UTF-8') . '...</p>
+                     <a href="view.php?id=' . htmlspecialchars($row['id']) . '" class="cta-btn">மேலும் வாசிக்க</a>
+                </div>
+              </div>';
+    }
+} else {
+    echo '<p>சமீபத்திய புதுப்பிப்புகள் இல்லை.</p>';
+}
+
+
+
+?>
+             
+        </div>
+        
     </div>
 
-    <!-- Left Side -->
+    <!--Left Side-->
     <div class="left-side" id="leftContent">
-        <h2 style="text-align: center; font-weight: bold;">சமீபத்திய புதிப்பிப்புகள்</h2>
+        <!--h2 style="text-align: center; font-weight: bold;">சமீபத்திய புதிப்பிப்புகள்</h2-->
     </div>
     
-    <!-- Right Side -->
+    <!-- Right Side >
     <div class="right-side" id="updateList">
-        <?php
+        </*?php
         require_once('connect.php');
 
         // Fetch categories from the database
@@ -333,7 +343,7 @@ if ($result->num_rows > 0) {
             echo '<p>No categories available.</p>';
         }
         ?>
-    </div>
+    </div-->
 </div>
 
     
@@ -426,36 +436,7 @@ if ($result->num_rows > 0) {
  
 
 
-//searching
-document.querySelector('.search-bar-container form').addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevent the default form submission behavior
 
-    const query = document.querySelector('.search-input').value.trim();
-    const searchResultsContainer = document.getElementById('searchResults');
-
-    if (query === '') {
-        searchResultsContainer.innerHTML = '';
-        searchResultsContainer.style.display = 'none'; // Hide the container if no input
-        return;
-    }
-
-    fetch(`search.php?query=${encodeURIComponent(query)}`)
-        .then(response => response.text())
-        .then(data => {
-            if (data.trim() !== '') {
-                searchResultsContainer.innerHTML = data;
-                searchResultsContainer.style.display = 'block'; // Show the container with results
-            } else {
-                searchResultsContainer.innerHTML = '<p>No results found.</p>';
-                searchResultsContainer.style.display = 'block'; // Show the container even if no results
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching search results:', error);
-            searchResultsContainer.innerHTML = '<p>An error occurred while fetching results.</p>';
-            searchResultsContainer.style.display = 'block'; // Show the container on error
-        });
-});
 
 
 function fetchArticles(category) {

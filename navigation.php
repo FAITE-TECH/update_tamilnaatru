@@ -369,6 +369,75 @@ nav ul li a:focus {
   }
 }
 
+/* Adjusted search box styling to fit within the screen */
+nav ul li.search {
+  position: relative;
+  margin-left: 5px;
+}
+
+nav ul li.search #search-icon {
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+nav ul li.search #search-box {
+  position: absolute;
+  top: 100%; /* Position just below the search icon */
+  left: 50%; /* Align horizontally with the icon */
+  transform: translateX(-90%); /* Center horizontally */
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  white-space: nowrap;
+}
+
+nav ul li.search #search-box input {
+  border: none;
+  padding: 8px;
+  font-size: 16px;
+  width: 200px;
+  max-width: 90%; /* Prevent overflow */
+}
+
+nav ul li.search #search-box input:focus {
+  outline: none;
+}
+#search-btn {
+  padding: 5px 10px;
+  background-color: #ff4f5a;;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#search-btn:hover {
+  background-color: #5f3434;
+}
+
+
+#searchResults {
+ 
+    padding: 0;
+    margin: 0;
+}
+
+#searchResults a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    margin: 0; /* Remove extra gaps */
+    padding: 4px 0;
+    line-height: 1.2; /* Adjust line height for tighter spacing */
+}
+
+#searchResults a:hover {
+    text-decoration: underline;
+}
+
+
 
 
 
@@ -443,6 +512,22 @@ nav ul li a:focus {
       </ul>
     </li>
     <li><a href="login.html">உள்நுழைவு</a></li>
+  <!-- Search Icon -->
+  <li class="search">
+  <a href="#" id="search-icon"><i class="fas fa-search"></i></a>
+
+  <!-- Search input and button -->
+  <div id="search-box" style="display: none;">
+    <form id="search-form">
+      <input type="text" name="query" placeholder="தேடல்..." class="search-input" required>
+      <button type="submit" id="search-btn" class="search-button">தேடு</button>
+    </form>
+    <div id="searchResults" class="search-results-container" style="display: none; "></div>
+  </div>
+</li>
+
+
+
   </ul>
 </nav>
 <script>
@@ -479,5 +564,44 @@ document.querySelectorAll('.dropdown > a').forEach(dropdown => {
     });
   });
 });
+
+// Show or hide the search box
+document.getElementById("search-icon").addEventListener("click", function (event) {
+    event.preventDefault(); 
+    const searchBox = document.getElementById("search-box");
+    searchBox.style.display = (searchBox.style.display === "none" || searchBox.style.display === "") ? "block" : "none";
+});
+
+// Handle the search form submission using AJAX
+document.getElementById("search-form").addEventListener("submit", function (event) {
+    event.preventDefault(); 
+
+    const query = document.querySelector('.search-input').value.trim();
+    const searchResultsContainer = document.getElementById('searchResults');
+
+    if (query === '') {
+        searchResultsContainer.innerHTML = '';
+        searchResultsContainer.style.display = 'none';
+        return;
+    }
+
+    fetch(`search.php?query=${encodeURIComponent(query)}`)
+        .then(response => response.text())
+        .then(data => {
+            if (data.trim() !== '') {
+                searchResultsContainer.innerHTML = data;
+                searchResultsContainer.style.display = 'block';
+            } else {
+                searchResultsContainer.innerHTML = '<p>உங்கள் தேடலுக்குப் பொருத்தமான கட்டுரைகள் எதுவும் இல்லை.</p>';
+                searchResultsContainer.style.display = 'block';
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching search results:', error);
+            searchResultsContainer.innerHTML = '<p>An error occurred while fetching results.</p>';
+            searchResultsContainer.style.display = 'block';
+        });
+});
+
 
 </script>

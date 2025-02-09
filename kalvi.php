@@ -10,6 +10,15 @@
   <link rel="stylesheet" href="newstyle.css" />
   <link href="https://fonts.googleapis.com/css2?family=Pavanam&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BSYT314EWJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BSYT314EWJ');
+</script>
 
 
   <style>
